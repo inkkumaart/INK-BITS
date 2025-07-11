@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>MindAR Test</title>
+    <title>MindAR Secuencia PNG Animada</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- MindAR y A-Frame -->
@@ -31,23 +31,68 @@
         vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: true"
       >
-        <!-- Cargar el GIF animado como textura -->
         <a-assets>
-          <img id="#EE-gif" src="EE.gif" crossorigin="anonymous" />
+          <!-- Cargamos las imágenes PNG de la secuencia -->
+          <img id="frame0" src="Eevee/Eevee-1.png" crossorigin="anonymous" />
+          <img id="frame1" src="Eevee/Eevee-2.png" crossorigin="anonymous" />
+          <img id="frame2" src="Eevee/Eevee-3.png" crossorigin="anonymous" />
+          <img id="frame3" src="Eevee/Eevee-4.png" crossorigin="anonymous" />
+          <img id="frame4" src="Eevee/Eevee-5.png" crossorigin="anonymous" />
+          <img id="frame5" src="Eevee/Eevee-6.png" crossorigin="anonymous" />
+          <img id="frame6" src="Eevee/Eevee-7.png" crossorigin="anonymous" />
         </a-assets>
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <!-- Mostrar la imagen (solo animada si el navegador lo soporta) -->
         <a-entity mindar-image-target="targetIndex: 0">
-          <a-image 
-            src="#EE.gif"
+          <a-image
+            id="anim-image"
+            src="#frame0"
             position="0 0 0"
             width="1"
             height="1.3"
+            transparent="true"
           ></a-image>
         </a-entity>
       </a-scene>
     </div>
+
+    <script>
+      // Animación por secuencia de PNGs
+      document.addEventListener("DOMContentLoaded", () => {
+        const NUM_FRAMES = 10; // Número total de frames
+        const FRAME_RATE = 30; // Frames por segundo
+        const FRAME_DURATION = 1000 / FRAME_RATE; // Duración de cada frame en ms
+
+        const animImage = document.querySelector("#anim-image");
+        let currentFrame = 0;
+        let animInterval;
+        let targetVisible = false;
+
+        // Usamos MindAR para detectar el target y controlar animación
+        const scene = document.querySelector("a-scene");
+
+        // Escuchar eventos de MindAR para saber cuándo se detecta y se pierde el target
+        scene.addEventListener("targetFound", () => {
+          targetVisible = true;
+          // Iniciar animación si no está iniciada
+          if (!animInterval) {
+            animInterval = setInterval(() => {
+              currentFrame = (currentFrame + 1) % NUM_FRAMES;
+              animImage.setAttribute("src", `#frame${currentFrame}`);
+            }, FRAME_DURATION);
+          }
+        });
+
+        scene.addEventListener("targetLost", () => {
+          targetVisible = false;
+          // Detener animación y volver al frame 0
+          clearInterval(animInterval);
+          animInterval = null;
+          currentFrame = 0;
+          animImage.setAttribute("src", "#frame0");
+        });
+      });
+    </script>
   </body>
 </html>
