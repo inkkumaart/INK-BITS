@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>MindAR Test</title>
+    <title>MindAR Animación</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- MindAR y A-Frame -->
@@ -25,25 +25,36 @@
           warmupTolerance: 1;
           missTolerance: 1;
         " 
-        color-space="CMYK"
+        color-space="sRGB"
         embedded
         renderer="colorManagement: true, physicallyCorrectLights"
         vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: true"
       >
         <a-assets>
-          <a-asset-item id="boxModel" src="EE.glb"></a-asset-item>
+          <video 
+            id="EEVideo" 
+            src="EE.webp" 
+            autoplay 
+            loop 
+            muted 
+            playsinline
+            crossorigin="anonymous"
+          ></video>
         </a-assets>
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
         <a-entity mindar-image-target="targetIndex: 0">
-          <a-gltf-model 
-            src="#boxModel" 
-            position="0 0 0" 
-            scale="0.1 0.1 0.1"
-            animation-mixer
-          ></a-gltf-model>
+          <!-- Video animado -->
+          <a-video
+            src="EE.webp"
+            width="1"
+            height="1.3"
+            position="0 0 0"
+            rotation="0 0 0"
+            transparent="true"
+          ></a-video>
         </a-entity>
       </a-scene>
     </div>
