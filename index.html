@@ -67,30 +67,25 @@
         const animImage = document.querySelector("#anim-image");
         let currentFrame = 0;
         let animInterval;
-        let targetVisible = false;
 
-        // Usamos MindAR para detectar el target y controlar animación
         const scene = document.querySelector("a-scene");
 
-        // Escuchar eventos de MindAR para saber cuándo se detecta y se pierde el target
         scene.addEventListener("targetFound", () => {
-          targetVisible = true;
-          // Iniciar animación si no está iniciada
           if (!animInterval) {
             animInterval = setInterval(() => {
               currentFrame = (currentFrame + 1) % NUM_FRAMES;
-              animImage.setAttribute("src", `#frame${currentFrame}`);
+              console.log("Frame actual:", currentFrame);
+              // Actualizar textura con material para forzar refresco
+              animImage.setAttribute("material", "src", `#frame${currentFrame}`);
             }, FRAME_DURATION);
           }
         });
 
         scene.addEventListener("targetLost", () => {
-          targetVisible = false;
-          // Detener animación y volver al frame 0
           clearInterval(animInterval);
           animInterval = null;
           currentFrame = 0;
-          animImage.setAttribute("src", "#frame0");
+          animImage.setAttribute("material", "src", "#frame0");
         });
       });
     </script>
