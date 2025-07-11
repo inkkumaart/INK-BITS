@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Llaveros - Selección</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body { 
+      margin: 0; 
+      font-family: sans-serif; 
+      background: #fafafa; 
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    #tabs {
+      background: rgba(255,255,255,0.95);
+      border-radius: 8px;
+      padding: 20px 40px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      user-select: none;
+      display: flex;
+      gap: 12px;
+    }
+    #tabs button {
+      cursor: pointer;
+      padding: 10px 20px;
+      border: 1px solid #333;
+      background: white;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 18px;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+    #tabs button.active {
+      background: #4CAF50;
+      color: white;
+      border-color: #4CAF50;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="tabs">
+    <button data-character="eevee" class="active">Llaveros Eevee</button>
+  </div>
+
+</body>
+</html>
