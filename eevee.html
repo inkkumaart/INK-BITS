@@ -2,10 +2,11 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>INK BITS - Animación MindAR</title>
+    <title>MindAR Secuencia PNG Animada</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- A-Frame y MindAR -->
+    <!-- MindAR y A-Frame -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image.prod.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
 
@@ -16,8 +17,14 @@
   </head>
   <body>
     <div id="ar-container">
-      <a-scene
-        mindar-image="imageTargetSrc:targets.mind"
+      <a-scene 
+        mindar-image="
+          imageTargetSrc: targets.mind;
+          filterMinCF: 0.05;
+          filterBeta: 5;
+          warmupTolerance: 1;
+          missTolerance: 1;
+        " 
         color-space="sRGB"
         embedded
         renderer="colorManagement: true, physicallyCorrectLights"
@@ -25,6 +32,7 @@
         device-orientation-permission-ui="enabled: true"
       >
         <a-assets>
+          <!-- Cargamos las imágenes PNG de la secuencia -->
           <img id="frame0" src="Eevee/Eevee-1.png" crossorigin="anonymous" />
           <img id="frame1" src="Eevee/Eevee-2.png" crossorigin="anonymous" />
           <img id="frame2" src="Eevee/Eevee-3.png" crossorigin="anonymous" />
@@ -50,33 +58,34 @@
     </div>
 
     <script>
-      window.addEventListener("load", () => {
-        const NUM_FRAMES = 7;
-        const FRAME_RATE = 10;
-        const FRAME_DURATION = 1000 / FRAME_RATE;
+      // Animación por secuencia de PNGs
+      document.addEventListener("DOMContentLoaded", () => {
+        const NUM_FRAMES = 7; // Número total de frames
+        const FRAME_RATE = 10; // Frames por segundo
+        const FRAME_DURATION = 1000 / FRAME_RATE; // Duración de cada frame en ms
 
         const animImage = document.querySelector("#anim-image");
         let currentFrame = 0;
-        let animInterval = null;
+        let animInterval;
 
-        const sceneEl = document.querySelector("a-scene");
+        const scene = document.querySelector("a-scene");
 
-        sceneEl.addEventListener("targetFound", () => {
+        scene.addEventListener("targetFound", () => {
           if (!animInterval) {
             animInterval = setInterval(() => {
               currentFrame = (currentFrame + 1) % NUM_FRAMES;
-              animImage.setAttribute("src", `#frame${currentFrame}`);
+              console.log("Frame actual:", currentFrame);
+              // Actualizar textura con material para forzar refresco
+              animImage.setAttribute("material", "src", `#frame${currentFrame}`);
             }, FRAME_DURATION);
           }
         });
 
-        sceneEl.addEventListener("targetLost", () => {
-          if (animInterval) {
-            clearInterval(animInterval);
-            animInterval = null;
-          }
+        scene.addEventListener("targetLost", () => {
+          clearInterval(animInterval);
+          animInterval = null;
           currentFrame = 0;
-          animImage.setAttribute("src", "#frame0");
+          animImage.setAttribute("material", "src", "#frame0");
         });
       });
     </script>
