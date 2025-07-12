@@ -5,8 +5,7 @@
     <title>MindAR Secuencia PNG Animada</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- MindAR y A-Frame -->
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image.prod.js"></script>
+    <!-- A-Frame y luego MindAR -->
     <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
 
@@ -18,13 +17,7 @@
   <body>
     <div id="ar-container">
       <a-scene 
-        mindar-image="
-          imageTargetSrc:Eevee/targets.mind;
-          filterMinCF: 0.05;
-          filterBeta: 5;
-          warmupTolerance: 1;
-          missTolerance: 1;
-        " 
+        mindar-image="imageTargetSrc: Eevee/targets.mind; filterMinCF: 0.05; filterBeta: 5; warmupTolerance: 1; missTolerance: 1"
         color-space="sRGB"
         embedded
         renderer="colorManagement: true, physicallyCorrectLights"
@@ -57,11 +50,10 @@
     </div>
 
     <script>
-      // Animación por secuencia de PNGs
       document.addEventListener("DOMContentLoaded", () => {
-        const NUM_FRAMES = 7; // Número total de frames
-        const FRAME_RATE = 10; // Frames por segundo
-        const FRAME_DURATION = 1000 / FRAME_RATE; // Duración de cada frame en ms
+        const NUM_FRAMES = 7;
+        const FRAME_RATE = 10;
+        const FRAME_DURATION = 1000 / FRAME_RATE;
 
         const animImage = document.querySelector("#anim-image");
         let currentFrame = 0;
