@@ -15,16 +15,11 @@
       #ar-container { width: 100vw; height: 100vh; }
     </style>
   </head>
+
   <body>
     <div id="ar-container">
       <a-scene 
-        mindar-image="
-          imageTargetSrc: targets.mind;
-          filterMinCF: 0.05;
-          filterBeta: 5;
-          warmupTolerance: 1;
-          missTolerance: 1;
-        " 
+        mindar-image="imageTargetSrc: targets.mind; filterMinCF: 0.05; filterBeta: 5; warmupTolerance: 1; missTolerance: 1;" 
         color-space="sRGB"
         embedded
         renderer="colorManagement: true, physicallyCorrectLights"
@@ -32,7 +27,7 @@
         device-orientation-permission-ui="enabled: true"
       >
         <a-assets>
-          <!-- Cargamos las imágenes PNG de la secuencia -->
+          <!-- Cargamos los frames de la animación -->
           <img id="frame0" src="Eevee/Eevee-1.png" crossorigin="anonymous" />
           <img id="frame1" src="Eevee/Eevee-2.png" crossorigin="anonymous" />
           <img id="frame2" src="Eevee/Eevee-3.png" crossorigin="anonymous" />
@@ -50,44 +45,32 @@
             src="#frame0"
             position="0 0 0"
             width="1"
-            height="1.3"
-            transparent="true"
+            height="1"
+            frame-animation
           ></a-image>
         </a-entity>
+
+        <!-- Script para animar los frames -->
+        <script>
+          AFRAME.registerComponent('frame-animation', {
+            init: function () {
+              const image = this.el;
+              const frames = [
+                '#frame0', '#frame1', '#frame2',
+                '#frame3', '#frame4', '#frame5', '#frame6'
+              ];
+              let current = 0;
+              this.interval = setInterval(() => {
+                image.setAttribute('src', frames[current]);
+                current = (current + 1) % frames.length;
+              }, 100); // Cambia cada 100 ms
+            },
+            remove: function () {
+              clearInterval(this.interval);
+            }
+          });
+        </script>
       </a-scene>
     </div>
-
-    <script>
-      // Animación por secuencia de PNGs
-      document.addEventListener("DOMContentLoaded", () => {
-        const NUM_FRAMES = 7; // Número total de frames
-        const FRAME_RATE = 10; // Frames por segundo
-        const FRAME_DURATION = 1000 / FRAME_RATE; // Duración de cada frame en ms
-
-        const animImage = document.querySelector("#anim-image");
-        let currentFrame = 0;
-        let animInterval;
-
-        const scene = document.querySelector("a-scene");
-
-        scene.addEventListener("targetFound", () => {
-          if (!animInterval) {
-            animInterval = setInterval(() => {
-              currentFrame = (currentFrame + 1) % NUM_FRAMES;
-              console.log("Frame actual:", currentFrame);
-              // Actualizar textura con material para forzar refresco
-              animImage.setAttribute("material", "src", `#frame${currentFrame}`);
-            }, FRAME_DURATION);
-          }
-        });
-
-        scene.addEventListener("targetLost", () => {
-          clearInterval(animInterval);
-          animInterval = null;
-          currentFrame = 0;
-          animImage.setAttribute("material", "src", "#frame0");
-        });
-      });
-    </script>
   </body>
 </html>
