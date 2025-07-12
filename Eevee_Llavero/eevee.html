@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>Animación Eevee</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- Estilos del tema Phantom -->
     <link rel="stylesheet" href="../../assets/css/main.css" />
     <noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
@@ -15,20 +15,34 @@
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
 
     <style>
-      body { margin: 0; overflow: hidden; }
-      #ar-container { width: 100vw; height: 100vh; }
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      #ar-container {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Asegura que el menú y demás contenido estén sobre el AR si se desea */
+      #main, #header, #menu, #footer {
+        z-index: 10;
+        position: relative;
+      }
     </style>
   </head>
   <body class="is-preload">
     <div id="wrapper">
-
       <!-- Header -->
       <header id="header">
         <div class="inner">
           <a href="../../index.html" class="logo">
-            <span class="symbol"><img src="../../images/logo.svg" alt="" /></span><span class="title">Phantom</span>
+            <span class="symbol"><img src="../../images/logo.svg" alt="" /></span>
+            <span class="title">Phantom</span>
           </a>
-
           <nav>
             <ul>
               <li><a href="#menu">Menu</a></li>
@@ -37,7 +51,7 @@
         </div>
       </header>
 
-      <!-- Menu -->
+      <!-- Menu lateral -->
       <nav id="menu">
         <h2>Menu</h2>
         <ul>
@@ -52,21 +66,15 @@
       <!-- Contenido principal -->
       <div id="main">
         <div class="inner">
-          <h1>Animación de Eevee</h1>
-          <p>Apunta con la cámara al marcador para ver la animación.</p>
+          <h1>Animación Eevee</h1>
+          <p>Apunta tu cámara al marcador para ver la animación de Eevee.</p>
         </div>
       </div>
 
-      <!-- Escena AR -->
+      <!-- AR Viewer -->
       <div id="ar-container">
-        <a-scene 
-          mindar-image="
-            imageTargetSrc: targets.mind;
-            filterMinCF: 0.05;
-            filterBeta: 5;
-            warmupTolerance: 1;
-            missTolerance: 1;
-          " 
+        <a-scene
+          mindar-image="imageTargetSrc: targets.mind; filterMinCF: 0.05; filterBeta: 5; warmupTolerance: 1; missTolerance: 1;"
           color-space="sRGB"
           embedded
           renderer="colorManagement: true, physicallyCorrectLights"
@@ -98,10 +106,13 @@
         </a-scene>
       </div>
 
-      <!-- Footer (opcional) -->
+      <!-- Footer opcional -->
       <footer id="footer">
         <div class="inner">
-          <p>&copy; Eevee Animation. Design: <a href="http://html5up.net">HTML5 UP</a>.</p>
+          <ul class="copyright">
+            <li>&copy; Eevee AR. All rights reserved.</li>
+            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+          </ul>
         </div>
       </footer>
     </div>
@@ -113,7 +124,7 @@
     <script src="../../assets/js/util.js"></script>
     <script src="../../assets/js/main.js"></script>
 
-    <!-- Animación -->
+    <!-- Script de animación -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const NUM_FRAMES = 7;
