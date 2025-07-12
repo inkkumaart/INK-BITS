@@ -51,7 +51,6 @@
             position="0 0 0"
             width="1"
             height="1.3"
-            transparent="true"
           ></a-image>
         </a-entity>
       </a-scene>
@@ -66,7 +65,7 @@
 
         const animImage = document.querySelector("#anim-image");
         let currentFrame = 0;
-        let animInterval;
+        let animInterval = null;
 
         const scene = document.querySelector("a-scene");
 
@@ -74,18 +73,18 @@
           if (!animInterval) {
             animInterval = setInterval(() => {
               currentFrame = (currentFrame + 1) % NUM_FRAMES;
-              console.log("Frame actual:", currentFrame);
-              // Actualizar textura con material para forzar refresco
-              animImage.setAttribute("material", "src", `#frame${currentFrame}`);
+              animImage.setAttribute("src", `#frame${currentFrame}`);
             }, FRAME_DURATION);
           }
         });
 
         scene.addEventListener("targetLost", () => {
-          clearInterval(animInterval);
-          animInterval = null;
+          if (animInterval) {
+            clearInterval(animInterval);
+            animInterval = null;
+          }
           currentFrame = 0;
-          animImage.setAttribute("material", "src", "#frame0");
+          animImage.setAttribute("src", "#frame0");
         });
       });
     </script>
