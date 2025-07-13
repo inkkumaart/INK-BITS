@@ -17,10 +17,9 @@
   </head>
 
   <body>
-
     <div id="ar-container">
-      <a-scene 
-        mindar-image="imageTargetSrc: A.llaveros/Eevee/targets.mind; filterMinCF: 0.05; filterBeta: 5;"
+      <a-scene
+        mindar-image="imageTargetSrc: A.llaveros/targets.mind; filterMinCF: 0.05; filterBeta: 5;"
         color-space="sRGB"
         embedded
         renderer="colorManagement: true, physicallyCorrectLights"
@@ -49,7 +48,7 @@
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <!-- Target de Eevee -->
+        <!-- Target Eevee -->
         <a-entity mindar-image-target="targetIndex: 0">
           <a-image
             id="eevee-image"
@@ -57,11 +56,11 @@
             position="0 0 0"
             width="1"
             height="1"
-            frame-animation="frames: eevee0,eevee1,eevee2,eevee3,eevee4,eevee5,eevee6"
+            frame-animation-control="frames: eevee0,eevee1,eevee2,eevee3,eevee4,eevee5,eevee6"
           ></a-image>
         </a-entity>
 
-        <!-- Target de Pikachu -->
+        <!-- Target Pikachu -->
         <a-entity mindar-image-target="targetIndex: 1">
           <a-image
             id="pikachu-image"
@@ -69,51 +68,68 @@
             position="0 0 0"
             width="1"
             height="1"
-            frame-animation="frames: pikachu0,pikachu1,pikachu2,pikachu3,pikachu4"
+            frame-animation-control="frames: pikachu0,pikachu1,pikachu2,pikachu3,pikachu4"
           ></a-image>
         </a-entity>
 
-        <!-- Animación de frames -->
+        <!-- Componente de animación activada solo al detectar -->
         <script>
-          AFRAME.registerComponent('frame-animation', {
+          AFRAME.registerComponent('frame-animation-control', {
             schema: { frames: { type: 'string' } },
             init: function () {
               const image = this.el;
               const frameIds = this.data.frames.split(',').map(id => `#${id}`);
               let current = 0;
-              this.interval = setInterval(() => {
-                image.setAttribute('src', frameIds[current]);
-                current = (current + 1) % frameIds.length;
-              }, 150);
+              let interval = null;
+
+              const startAnimation = () => {
+                if (!interval) {
+                  interval = setInterval(() => {
+                    image.setAttribute('src', frameIds[current]);
+                    current = (current + 1) % frameIds.length;
+                  }, 150);
+                }
+              };
+
+              const stopAnimation = () => {
+                if (interval) {
+                  clearInterval(interval);
+                  interval = null;
+                }
+              };
+
+              this.el.parentElement.addEventListener("targetFound", () => {
+                startAnimation();
+              });
+
+              this.el.parentElement.addEventListener("targetLost", () => {
+                stopAnimation();
+              });
             },
             remove: function () {
-              clearInterval(this.interval);
+              if (this.interval) {
+                clearInterval(this.interval);
+              }
             }
           });
         </script>
 
-        <!-- Ocultar loader al iniciar -->
+        <!-- Ocultar loader si existiera -->
         <script>
           document.addEventListener("DOMContentLoaded", () => {
             const scene = document.querySelector("#scene");
             const loading = document.querySelector("#loading");
 
-            scene.addEventListener("renderstart", () => {
-              console.log("Escena lista, esperando a MindAR...");
-            });
-
             scene.addEventListener("mindar-start", () => {
-              console.log("MindAR inició.");
-              loading.style.display = "none";
+              if (loading) loading.style.display = "none";
             });
 
             scene.addEventListener("mindar-error", (e) => {
               console.error("Error de MindAR:", e.detail);
-              loading.innerText = "Error cargando AR";
+              if (loading) loading.innerText = "Error cargando AR";
             });
           });
         </script>
-
       </a-scene>
     </div>
   </body>
