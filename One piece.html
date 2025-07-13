@@ -61,37 +61,61 @@
         </a-entity>
 
         <!-- Target Sanji -->
-        <a-entity mindar-image-target="targetIndex: 1" id="sanji-target">
-          <a-image
-            id="sanji-image"
-            src="#sanji0"
-            position="0 0 0"
-            width="1"
-            height="1"
-            frame-animation="frames: #sanji0,#sanji1,#sanji2,#sanji3,#sanji4,#sanji5,#sanji6; interval: 150"
-          ></a-image>
-        </a-entity>
+<a-entity mindar-image-target="targetIndex: 1" id="sanji-target">
+  <a-image
+    id="sanji-image"
+    src="#sanji0"
+    position="0 0 0"
+    width="1"
+    height="1"
+  ></a-image>
+</a-entity>
 
-        <!-- Componente de animación por frames -->
-        <script>
-          AFRAME.registerComponent('frame-animation', {
-            schema: {
-              frames: { type: 'string' },
-              interval: { type: 'int', default: 150 }
-            },
-            init: function () {
-              const frames = this.data.frames.split(',');
-              let current = 0;
-              this.interval = setInterval(() => {
-                this.el.setAttribute('src', frames[current]);
-                current = (current + 1) % frames.length;
-              }, this.data.interval);
-            },
-            remove: function () {
-              clearInterval(this.interval);
-            }
-          });
-        </script>
+<!-- Activar animación solo al detectar el target -->
+<script>
+  AFRAME.registerComponent('frame-animation', {
+    schema: {
+      frames: { type: 'string' },
+      interval: { type: 'int', default: 150 }
+    },
+    init: function () {
+      this.frames = this.data.frames.split(',');
+      this.current = 0;
+      this.intervalId = null;
+    },
+    play: function () {
+      if (this.intervalId) return;
+      this.intervalId = setInterval(() => {
+        this.el.setAttribute('src', this.frames[this.current]);
+        this.current = (this.current + 1) % this.frames.length;
+      }, this.data.interval);
+    },
+    pause: function () {
+      if (this.intervalId) {
+        clearInterval(this.intervalId);
+        this.intervalId = null;
+      }
+    },
+    remove: function () {
+      this.pause();
+    }
+  });
+
+  // Esperar a que cargue la escena
+  document.addEventListener("DOMContentLoaded", () => {
+    const sanjiTarget = document.querySelector("#sanji-target");
+    const sanjiImage = document.querySelector("#sanji-image");
+
+    sanjiTarget.addEventListener("targetFound", () => {
+      sanjiImage.setAttribute("frame-animation", "frames: #sanji0,#sanji1,#sanji2,#sanji3,#sanji4,#sanji5,#sanji6; interval: 150");
+    });
+
+    sanjiTarget.addEventListener("targetLost", () => {
+      sanjiImage.removeAttribute("frame-animation");
+    });
+  });
+</script>
+
       </a-scene>
     </div>
   </body>
