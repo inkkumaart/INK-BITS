@@ -28,12 +28,10 @@
   </head>
 
   <body>
-    <!-- Loader -->
-    <div id="loading">Cargando realidad aumentada...</div>
 
     <div id="ar-container">
       <a-scene 
-        mindar-image="imageTargetSrc: A.llaveros/targets.mind; filterMinCF: 0.05; filterBeta: 5;"
+        mindar-image="imageTargetSrc: A.llaveros/Eevee/targets.mind; filterMinCF: 0.05; filterBeta: 5;"
         color-space="sRGB"
         embedded
         renderer="colorManagement: true, physicallyCorrectLights"
@@ -42,7 +40,17 @@
         loading-screen="enabled: false"
         id="scene"
       >
-
+    <div id="ar-container">
+      <a-scene 
+        mindar-image="imageTargetSrc: A.llaveros/Pikachu/targets.mind; filterMinCF: 0.05; filterBeta: 5;"
+        color-space="sRGB"
+        embedded
+        renderer="colorManagement: true, physicallyCorrectLights"
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: true"
+        loading-screen="enabled: false"
+        id="scene"
+      >
         <a-assets>
           <!-- Frames de Eevee -->
           <img id="eevee0" src="A.llaveros/Eevee/Eevee-1.png" crossorigin="anonymous" />
