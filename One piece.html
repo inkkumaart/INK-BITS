@@ -5,10 +5,10 @@
     <title>MindAR - Llaveros animados</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- A-Frame y MindAR -->
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-ui.prod.js"></script>
+    <!-- Versiones compatibles -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
 
     <style>
       body { margin: 0; overflow: hidden; }
@@ -17,12 +17,9 @@
   </head>
 
   <body>
-    <!-- UI de MindAR -->
-    <mindar-ui></mindar-ui>
-
     <div id="ar-container">
       <a-scene
-        mindar-image="imageTargetSrc: A.Pegatinas/ONE PIECE/Zoro/targets.mind"
+        mindar-image="imageTargetSrc: A.Pegatinas/ONE PIECE/Zoro/targets.mind; filterMinCF: 0.05; filterBeta: 5; warmupTolerance: 1; missTolerance: 1;"
         color-space="sRGB"
         embedded
         renderer="colorManagement: true, physicallyCorrectLights"
@@ -30,111 +27,56 @@
         device-orientation-permission-ui="enabled: true"
       >
         <a-assets>
-          <!-- Zoro frames -->
-          <img id="zoro0" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-1.png" />
-          <img id="zoro1" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-2.png" />
-          <img id="zoro2" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-3.png" />
-          <img id="zoro3" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-4.png" />
-          <img id="zoro4" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-5.png" />
-          <img id="zoro5" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-6.png" />
-          <img id="zoro6" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-7.png" />
-
-          <!-- Sanji frames -->
-          <img id="sanji0" src="A.Pegatinas/ONE PIECE/Sanji/Sanji-1.png" />
-          <img id="sanji1" src="A.Pegatinas/ONE PIECE/Sanji/Sanji-2.png" />
-          <img id="sanji2" src="A.Pegatinas/ONE PIECE/Sanji/Sanji-3.png" />
-          <img id="sanji3" src="A.Pegatinas/ONE PIECE/Sanji/Sanji-4.png" />
-          <img id="sanji4" src="A.Pegatinas/ONE PIECE/Sanji/Sanji-5.png" />
-          <img id="sanji5" src="A.Pegatinas/ONE PIECE/Sanji/Sanji-6.png" />
-          <img id="sanji6" src="A.Pegatinas/ONE PIECE/Sanji/Sanji-7.png" />
+          <!-- Frames animados de Zoro -->
+          <img id="zoro0" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-1.png" crossorigin="anonymous" />
+          <img id="zoro1" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-2.png" crossorigin="anonymous" />
+          <img id="zoro2" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-3.png" crossorigin="anonymous" />
+          <img id="zoro3" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-4.png" crossorigin="anonymous" />
+          <img id="zoro4" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-5.png" crossorigin="anonymous" />
+          <img id="zoro5" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-6.png" crossorigin="anonymous" />
+          <img id="zoro6" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-7.png" crossorigin="anonymous" />
         </a-assets>
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
         <!-- Target 0: Zoro -->
-        <a-entity mindar-image-target="targetIndex: 0" id="zoroTarget">
+        <a-entity mindar-image-target="targetIndex: 0" id="zoro-target">
           <a-image
-            id="zoroImage"
-            position="0 0 0"
-            width="1"
-            height="1"
+            id="zoro-image"
             src="#zoro0"
-          ></a-image>
-        </a-entity>
-
-        <!-- Target 1: Sanji -->
-        <a-entity mindar-image-target="targetIndex: 1" id="sanjiTarget">
-          <a-image
-            id="sanjiImage"
             position="0 0 0"
             width="1"
             height="1"
-            src="#sanji0"
+            frame-animation
           ></a-image>
         </a-entity>
 
+        <!-- Componente para animar los frames -->
         <script>
-          AFRAME.registerComponent('frame-player', {
-            schema: {
-              frames: { type: 'array' },
-              interval: { type: 'int', default: 150 }
-            },
+          AFRAME.registerComponent('frame-animation', {
             init: function () {
-              this.current = 0;
-              this.el.setAttribute('src', this.data.frames[0]);
-            },
-            start: function () {
-              if (this.playing) return;
-              this.playing = true;
-              this.intervalId = setInterval(() => {
-                this.el.setAttribute('src', this.data.frames[this.current]);
-                this.current = (this.current + 1) % this.data.frames.length;
-              }, this.data.interval);
-            },
-            stop: function () {
-              this.playing = false;
-              clearInterval(this.intervalId);
+              const image = this.el;
+              const frames = [
+                '#zoro0', '#zoro1', '#zoro2',
+                '#zoro3', '#zoro4', '#zoro5', '#zoro6'
+              ];
+              let current = 0;
+              this.interval = setInterval(() => {
+                image.setAttribute('src', frames[current]);
+                current = (current + 1) % frames.length;
+              }, 150);
             },
             remove: function () {
-              this.stop();
+              clearInterval(this.interval);
             }
           });
 
-          document.addEventListener('DOMContentLoaded', () => {
-            // Zoro animation
-            const zoroImage = document.querySelector('#zoroImage');
-            const zoroTarget = document.querySelector('#zoroTarget');
-            zoroImage.setAttribute('frame-player', {
-              frames: [
-                '#zoro0', '#zoro1', '#zoro2',
-                '#zoro3', '#zoro4', '#zoro5', '#zoro6'
-              ],
-              interval: 150
-            });
-
-            zoroTarget.addEventListener('targetFound', () => {
-              zoroImage.components['frame-player'].start();
-            });
-            zoroTarget.addEventListener('targetLost', () => {
-              zoroImage.components['frame-player'].stop();
-            });
-
-            // Sanji animation
-            const sanjiImage = document.querySelector('#sanjiImage');
-            const sanjiTarget = document.querySelector('#sanjiTarget');
-            sanjiImage.setAttribute('frame-player', {
-              frames: [
-                '#sanji0', '#sanji1', '#sanji2',
-                '#sanji3', '#sanji4', '#sanji5', '#sanji6'
-              ],
-              interval: 200
-            });
-
-            sanjiTarget.addEventListener('targetFound', () => {
-              sanjiImage.components['frame-player'].start();
-            });
-            sanjiTarget.addEventListener('targetLost', () => {
-              sanjiImage.components['frame-player'].stop();
+          // Ocultar el loader cuando se detecta el target (opcional si usas UI)
+          document.addEventListener("DOMContentLoaded", () => {
+            const target = document.querySelector("#zoro-target");
+            target.addEventListener("targetFound", () => {
+              console.log("Zoro detectado");
+              // Aquí podrías ocultar un loader si lo tuvieras
             });
           });
         </script>
