@@ -13,10 +13,24 @@
     <style>
       body { margin: 0; overflow: hidden; }
       #ar-container { width: 100vw; height: 100vh; }
+      #loading {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: black;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        font-family: sans-serif;
+      }
     </style>
   </head>
 
   <body>
+    <!-- Loader -->
+    <div id="loading">Cargando realidad aumentada...</div>
+
     <div id="ar-container">
       <a-scene 
         mindar-image="imageTargetSrc: A.llaveros/targets.mind; filterMinCF: 0.05; filterBeta: 5;"
@@ -25,6 +39,8 @@
         renderer="colorManagement: true, physicallyCorrectLights"
         vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: true"
+        loading-screen="enabled: false"
+        id="scene"
       >
 
         <a-assets>
@@ -37,7 +53,7 @@
           <img id="eevee5" src="A.llaveros/Eevee/Eevee-6.png" crossorigin="anonymous" />
           <img id="eevee6" src="A.llaveros/Eevee/Eevee-7.png" crossorigin="anonymous" />
 
-          <!-- Frames de Pikachu (menos frames, por ejemplo 5) -->
+          <!-- Frames de Pikachu -->
           <img id="pikachu0" src="A.llaveros/Pikachu/Pikachu-1.png" crossorigin="anonymous" />
           <img id="pikachu1" src="A.llaveros/Pikachu/Pikachu-2.png" crossorigin="anonymous" />
           <img id="pikachu2" src="A.llaveros/Pikachu/Pikachu-3.png" crossorigin="anonymous" />
@@ -71,7 +87,7 @@
           ></a-image>
         </a-entity>
 
-        <!-- Componente que reproduce frames con control total -->
+        <!-- Animación de frames -->
         <script>
           AFRAME.registerComponent('frame-animation', {
             schema: { frames: { type: 'string' } },
@@ -82,11 +98,33 @@
               this.interval = setInterval(() => {
                 image.setAttribute('src', frameIds[current]);
                 current = (current + 1) % frameIds.length;
-              }, 150); // Animación más suave
+              }, 150);
             },
             remove: function () {
               clearInterval(this.interval);
             }
+          });
+        </script>
+
+        <!-- Ocultar loader al iniciar -->
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            const scene = document.querySelector("#scene");
+            const loading = document.querySelector("#loading");
+
+            scene.addEventListener("renderstart", () => {
+              console.log("Escena lista, esperando a MindAR...");
+            });
+
+            scene.addEventListener("mindar-start", () => {
+              console.log("MindAR inició.");
+              loading.style.display = "none";
+            });
+
+            scene.addEventListener("mindar-error", (e) => {
+              console.error("Error de MindAR:", e.detail);
+              loading.innerText = "Error cargando AR";
+            });
           });
         </script>
 
