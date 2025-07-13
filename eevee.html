@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>AR Eevee y Pikachu Animados</title>
+    <title>MindAR Secuencia PNG Animada</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- MindAR y A-Frame -->
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image.prod.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
@@ -18,8 +18,8 @@
 
   <body>
     <div id="ar-container">
-      <a-scene
-        mindar-image="imageTargetSrc: A.llaveros/targets.mind; filterMinCF: 0.05; filterBeta: 5;"
+      <a-scene 
+        mindar-image="imageTargetSrc: A/Eevee/targets.mind; filterMinCF: 0.05; filterBeta: 5; warmupTolerance: 1; missTolerance: 1;" 
         color-space="sRGB"
         embedded
         renderer="colorManagement: true, physicallyCorrectLights"
@@ -27,105 +27,47 @@
         device-orientation-permission-ui="enabled: true"
       >
         <a-assets>
-          <!-- Frames de Eevee -->
-          <img id="eevee0" src="A.llaveros/Eevee/Eevee-1.png" crossorigin="anonymous" />
-          <img id="eevee1" src="A.llaveros/Eevee/Eevee-2.png" crossorigin="anonymous" />
-          <img id="eevee2" src="A.llaveros/Eevee/Eevee-3.png" crossorigin="anonymous" />
-          <img id="eevee3" src="A.llaveros/Eevee/Eevee-4.png" crossorigin="anonymous" />
-          <img id="eevee4" src="A.llaveros/Eevee/Eevee-5.png" crossorigin="anonymous" />
-          <img id="eevee5" src="A.llaveros/Eevee/Eevee-6.png" crossorigin="anonymous" />
-          <img id="eevee6" src="A.llaveros/Eevee/Eevee-7.png" crossorigin="anonymous" />
-
-          <!-- Frames de Pikachu -->
-          <img id="pikachu0" src="A.llaveros/Pikachu/Pikachu-1.png" crossorigin="anonymous" />
-          <img id="pikachu1" src="A.llaveros/Pikachu/Pikachu-2.png" crossorigin="anonymous" />
-          <img id="pikachu2" src="A.llaveros/Pikachu/Pikachu-3.png" crossorigin="anonymous" />
-          <img id="pikachu3" src="A.llaveros/Pikachu/Pikachu-4.png" crossorigin="anonymous" />
-          <img id="pikachu4" src="A.llaveros/Pikachu/Pikachu-5.png" crossorigin="anonymous" />
+          <!-- Cargamos los frames de la animación -->
+          <img id="frame0" src="A.llaveros/Eevee/Eevee-1.png" crossorigin="anonymous" />
+          <img id="frame1" src="A.llaveros/Eevee/Eevee-2.png" crossorigin="anonymous" />
+          <img id="frame2" src="A.llaveros/Eevee/Eevee-3.png" crossorigin="anonymous" />
+          <img id="frame3" src="A.llaveros/Eevee/Eevee-4.png" crossorigin="anonymous" />
+          <img id="frame4" src="A.llaveros/Eevee/Eevee-5.png" crossorigin="anonymous" />
+          <img id="frame5" src="A.llaveros/Eevee/Eevee-6.png" crossorigin="anonymous" />
+          <img id="frame6" src="A.llaveros/Eevee/Eevee-7.png" crossorigin="anonymous" />
         </a-assets>
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <!-- Target Eevee -->
         <a-entity mindar-image-target="targetIndex: 0">
           <a-image
-            id="eevee-image"
-            src="#eevee0"
+            id="anim-image"
+            src="#frame0"
             position="0 0 0"
             width="1"
             height="1"
-            frame-animation-control="frames: eevee0,eevee1,eevee2,eevee3,eevee4,eevee5,eevee6"
+            frame-animation
           ></a-image>
         </a-entity>
 
-        <!-- Target Pikachu -->
-        <a-entity mindar-image-target="targetIndex: 1">
-          <a-image
-            id="pikachu-image"
-            src="#pikachu0"
-            position="0 0 0"
-            width="1"
-            height="1"
-            frame-animation-control="frames: pikachu0,pikachu1,pikachu2,pikachu3,pikachu4"
-          ></a-image>
-        </a-entity>
-
-        <!-- Componente de animación activada solo al detectar -->
+        <!-- Script para animar los frames -->
         <script>
-          AFRAME.registerComponent('frame-animation-control', {
-            schema: { frames: { type: 'string' } },
+          AFRAME.registerComponent('frame-animation', {
             init: function () {
               const image = this.el;
-              const frameIds = this.data.frames.split(',').map(id => `#${id}`);
+              const frames = [
+                '#frame0', '#frame1', '#frame2',
+                '#frame3', '#frame4', '#frame5', '#frame6'
+              ];
               let current = 0;
-              let interval = null;
-
-              const startAnimation = () => {
-                if (!interval) {
-                  interval = setInterval(() => {
-                    image.setAttribute('src', frameIds[current]);
-                    current = (current + 1) % frameIds.length;
-                  }, 150);
-                }
-              };
-
-              const stopAnimation = () => {
-                if (interval) {
-                  clearInterval(interval);
-                  interval = null;
-                }
-              };
-
-              this.el.parentElement.addEventListener("targetFound", () => {
-                startAnimation();
-              });
-
-              this.el.parentElement.addEventListener("targetLost", () => {
-                stopAnimation();
-              });
+              this.interval = setInterval(() => {
+                image.setAttribute('src', frames[current]);
+                current = (current + 1) % frames.length;
+              }, 100); // Cambia cada 100 ms
             },
             remove: function () {
-              if (this.interval) {
-                clearInterval(this.interval);
-              }
+              clearInterval(this.interval);
             }
-          });
-        </script>
-
-        <!-- Ocultar loader si existiera -->
-        <script>
-          document.addEventListener("DOMContentLoaded", () => {
-            const scene = document.querySelector("#scene");
-            const loading = document.querySelector("#loading");
-
-            scene.addEventListener("mindar-start", () => {
-              if (loading) loading.style.display = "none";
-            });
-
-            scene.addEventListener("mindar-error", (e) => {
-              console.error("Error de MindAR:", e.detail);
-              if (loading) loading.innerText = "Error cargando AR";
-            });
           });
         </script>
       </a-scene>
