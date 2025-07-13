@@ -2,13 +2,12 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>MindAR Secuencia PNG Animada</title>
+    <title>MindAR - Llaveros animados</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- MindAR y A-Frame -->
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image.prod.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+    <!-- A-Frame y MindAR -->
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 
     <style>
       body { margin: 0; overflow: hidden; }
@@ -18,8 +17,8 @@
 
   <body>
     <div id="ar-container">
-      <a-scene 
-        mindar-image="imageTargetSrc: A.Pegatinas/ONE PIECE/Zoro/targets.mind; filterMinCF: 0.05; filterBeta: 5; warmupTolerance: 1; missTolerance: 1;" 
+      <a-scene
+        mindar-image="imageTargetSrc: A.Pegatinas/targets.mind;"
         color-space="sRGB"
         embedded
         renderer="colorManagement: true, physicallyCorrectLights"
@@ -27,46 +26,66 @@
         device-orientation-permission-ui="enabled: true"
       >
         <a-assets>
-          <!-- Cargamos los frames de la animación -->
-          <img id="frame0" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-1.png" crossorigin="anonymous" />
-          <img id="frame1" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-2.png" crossorigin="anonymous" />
-          <img id="frame2" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-3.png" crossorigin="anonymous" />
-          <img id="frame3" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-4.png" crossorigin="anonymous" />
-          <img id="frame4" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-5.png" crossorigin="anonymous" />
-          <img id="frame5" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-6.png" crossorigin="anonymous" />
-          <img id="frame6" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-7.png" crossorigin="anonymous" />
+          <!-- Zoro frames -->
+          <img id="zoro0" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-1.png" />
+          <img id="zoro1" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-2.png" />
+          <img id="zoro2" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-3.png" />
+          <img id="zoro3" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-4.png" />
+          <img id="zoro4" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-5.png" />
+          <img id="zoro5" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-6.png" />
+          <img id="zoro6" src="A.Pegatinas/ONE PIECE/Zoro/Zoro-7.png" />
+
+          <!-- Sanji frames -->
+          <img id="sanji0" src="A.Pegatinas/ONE PIECE/Sanji/Sanji-1.png" />
+          <img id="sanji1" src="A.Pegatinas/ONE PIECE/Sanji/Sanji-2.png" />
+          <img id="sanji2" src="A.Pegatinas/ONE PIECE/Sanji/Sanji-3.png" />
+          <img id="sanji3" src="A.Pegatinas/ONE PIECE/Sanji/Sanji-4.png" />
+          <img id="sanji4" src="A.Pegatinas/ONE PIECE/Sanji/Sanji-5.png" />
+          <img id="sanji5" src="A.Pegatinas/ONE PIECE/Sanji/Sanji-6.png" />
+          <img id="sanji6" src="A.Pegatinas/ONE PIECE/Sanji/Sanji-7.png" />
         </a-assets>
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
+        <!-- Target 0: Zoro -->
         <a-entity mindar-image-target="targetIndex: 0">
           <a-image
-            id="anim-image"
-            src="#frame0"
             position="0 0 0"
             width="1"
             height="1"
-            frame-animation
+            src="#zoro0"
+            frame-animation="frames: #zoro0,#zoro1,#zoro2,#zoro3,#zoro4,#zoro5,#zoro6; interval: 150"
           ></a-image>
         </a-entity>
 
-        <!-- Script para animar los frames -->
+        <!-- Target 1: Sanji -->
+        <a-entity mindar-image-target="targetIndex: 1">
+          <a-image
+            position="0 0 0"
+            width="1"
+            height="1"
+            src="#sanji0"
+            frame-animation="frames: #sanji0,#sanji1,#sanji2,#sanji3,#sanji4; interval: 200"
+          ></a-image>
+        </a-entity>
+
+        <!-- Componente de animación -->
         <script>
           AFRAME.registerComponent('frame-animation', {
+            schema: {
+              frames: { type: 'string' },
+              interval: { type: 'int', default: 150 }
+            },
             init: function () {
-              const image = this.el;
-              const frames = [
-                '#frame0', '#frame1', '#frame2',
-                '#frame3', '#frame4', '#frame5', '#frame6'
-              ];
+              const frames = this.data.frames.split(',');
               let current = 0;
-              this.interval = setInterval(() => {
-                image.setAttribute('src', frames[current]);
+              this.intervalId = setInterval(() => {
+                this.el.setAttribute('src', frames[current]);
                 current = (current + 1) % frames.length;
-              }, 150); // más lento: cambia cada 150 ms
+              }, this.data.interval);
             },
             remove: function () {
-              clearInterval(this.interval);
+              clearInterval(this.intervalId);
             }
           });
         </script>
