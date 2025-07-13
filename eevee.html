@@ -13,17 +13,6 @@
     <style>
       body { margin: 0; overflow: hidden; }
       #ar-container { width: 100vw; height: 100vh; }
-      #loading {
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: black;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 999;
-        font-family: sans-serif;
-      }
     </style>
   </head>
 
@@ -32,17 +21,6 @@
     <div id="ar-container">
       <a-scene 
         mindar-image="imageTargetSrc: A.llaveros/Eevee/targets.mind; filterMinCF: 0.05; filterBeta: 5;"
-        color-space="sRGB"
-        embedded
-        renderer="colorManagement: true, physicallyCorrectLights"
-        vr-mode-ui="enabled: false"
-        device-orientation-permission-ui="enabled: true"
-        loading-screen="enabled: false"
-        id="scene"
-      >
-    <div id="ar-container">
-      <a-scene 
-        mindar-image="imageTargetSrc: A.llaveros/Pikachu/targets.mind; filterMinCF: 0.05; filterBeta: 5;"
         color-space="sRGB"
         embedded
         renderer="colorManagement: true, physicallyCorrectLights"
