@@ -63,7 +63,7 @@
               this.interval = setInterval(() => {
                 image.setAttribute('src', frames[current]);
                 current = (current + 1) % frames.length;
-              }, 100); // Cambia cada 100 ms
+              }, 150); // más lento: cambia cada 150 ms
             },
             remove: function () {
               clearInterval(this.interval);
