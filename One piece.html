@@ -8,6 +8,7 @@
     <!-- A-Frame y MindAR -->
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-ui.prod.js"></script>
 
     <style>
       body { margin: 0; overflow: hidden; }
@@ -16,9 +17,12 @@
   </head>
 
   <body>
+    <!-- UI de MindAR -->
+    <mindar-ui></mindar-ui>
+
     <div id="ar-container">
       <a-scene
-        mindar-image="imageTargetSrc: A.Pegatinas/targets.mind;"
+        mindar-image="imageTargetSrc: A.Pegatinas/targets.mind"
         color-space="sRGB"
         embedded
         renderer="colorManagement: true, physicallyCorrectLights"
@@ -48,45 +52,90 @@
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
         <!-- Target 0: Zoro -->
-        <a-entity mindar-image-target="targetIndex: 0">
+        <a-entity mindar-image-target="targetIndex: 0" id="zoroTarget">
           <a-image
+            id="zoroImage"
             position="0 0 0"
             width="1"
             height="1"
             src="#zoro0"
-            frame-animation="frames: #zoro0,#zoro1,#zoro2,#zoro3,#zoro4,#zoro5,#zoro6; interval: 150"
           ></a-image>
         </a-entity>
 
         <!-- Target 1: Sanji -->
-        <a-entity mindar-image-target="targetIndex: 1">
+        <a-entity mindar-image-target="targetIndex: 1" id="sanjiTarget">
           <a-image
+            id="sanjiImage"
             position="0 0 0"
             width="1"
             height="1"
             src="#sanji0"
-            frame-animation="frames: #sanji0,#sanji1,#sanji2,#sanji3,#sanji4; interval: 200"
           ></a-image>
         </a-entity>
 
-        <!-- Componente de animación -->
         <script>
-          AFRAME.registerComponent('frame-animation', {
+          AFRAME.registerComponent('frame-player', {
             schema: {
-              frames: { type: 'string' },
+              frames: { type: 'array' },
               interval: { type: 'int', default: 150 }
             },
             init: function () {
-              const frames = this.data.frames.split(',');
-              let current = 0;
+              this.current = 0;
+              this.el.setAttribute('src', this.data.frames[0]);
+            },
+            start: function () {
+              if (this.playing) return;
+              this.playing = true;
               this.intervalId = setInterval(() => {
-                this.el.setAttribute('src', frames[current]);
-                current = (current + 1) % frames.length;
+                this.el.setAttribute('src', this.data.frames[this.current]);
+                this.current = (this.current + 1) % this.data.frames.length;
               }, this.data.interval);
             },
-            remove: function () {
+            stop: function () {
+              this.playing = false;
               clearInterval(this.intervalId);
+            },
+            remove: function () {
+              this.stop();
             }
+          });
+
+          document.addEventListener('DOMContentLoaded', () => {
+            // Zoro animation
+            const zoroImage = document.querySelector('#zoroImage');
+            const zoroTarget = document.querySelector('#zoroTarget');
+            zoroImage.setAttribute('frame-player', {
+              frames: [
+                '#zoro0', '#zoro1', '#zoro2',
+                '#zoro3', '#zoro4', '#zoro5', '#zoro6'
+              ],
+              interval: 150
+            });
+
+            zoroTarget.addEventListener('targetFound', () => {
+              zoroImage.components['frame-player'].start();
+            });
+            zoroTarget.addEventListener('targetLost', () => {
+              zoroImage.components['frame-player'].stop();
+            });
+
+            // Sanji animation
+            const sanjiImage = document.querySelector('#sanjiImage');
+            const sanjiTarget = document.querySelector('#sanjiTarget');
+            sanjiImage.setAttribute('frame-player', {
+              frames: [
+                '#sanji0', '#sanji1', '#sanji2',
+                '#sanji3', '#sanji4', '#sanji5', '#sanji6'
+              ],
+              interval: 200
+            });
+
+            sanjiTarget.addEventListener('targetFound', () => {
+              sanjiImage.components['frame-player'].start();
+            });
+            sanjiTarget.addEventListener('targetLost', () => {
+              sanjiImage.components['frame-player'].stop();
+            });
           });
         </script>
       </a-scene>
