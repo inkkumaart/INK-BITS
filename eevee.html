@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>MindAR Secuencia PNG Animada</title>
+    <title>MindAR Secuencia PNG Animada - Dos personajes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- MindAR y A-Frame -->
@@ -27,43 +27,64 @@
         device-orientation-permission-ui="enabled: true"
       >
         <a-assets>
-          <!-- Cargamos los frames de la animación -->
-          <img id="frame0" src="A.llaveros/Eevee/Eevee-1.png" crossorigin="anonymous" />
-          <img id="frame1" src="A.llaveros/Eevee/Eevee-2.png" crossorigin="anonymous" />
-          <img id="frame2" src="A.llaveros/Eevee/Eevee-3.png" crossorigin="anonymous" />
-          <img id="frame3" src="A.llaveros/Eevee/Eevee-4.png" crossorigin="anonymous" />
-          <img id="frame4" src="A.llaveros/Eevee/Eevee-5.png" crossorigin="anonymous" />
-          <img id="frame5" src="A.llaveros/Eevee/Eevee-6.png" crossorigin="anonymous" />
-          <img id="frame6" src="A.llaveros/Eevee/Eevee-7.png" crossorigin="anonymous" />
+          <!-- Frames de Eevee -->
+          <img id="eevee0" src="A.llaveros/Eevee/Eevee-1.png" crossorigin="anonymous" />
+          <img id="eevee1" src="A.llaveros/Eevee/Eevee-2.png" crossorigin="anonymous" />
+          <img id="eevee2" src="A.llaveros/Eevee/Eevee-3.png" crossorigin="anonymous" />
+          <img id="eevee3" src="A.llaveros/Eevee/Eevee-4.png" crossorigin="anonymous" />
+          <img id="eevee4" src="A.llaveros/Eevee/Eevee-5.png" crossorigin="anonymous" />
+          <img id="eevee5" src="A.llaveros/Eevee/Eevee-6.png" crossorigin="anonymous" />
+          <img id="eevee6" src="A.llaveros/Eevee/Eevee-7.png" crossorigin="anonymous" />
+
+          <!-- Frames de Pikachu -->
+          <img id="pikachu0" src="A.llaveros/Pikachu/Pikachu-1.png" crossorigin="anonymous" />
+          <img id="pikachu1" src="A.llaveros/Pikachu/Pikachu-2.png" crossorigin="anonymous" />
+          <img id="pikachu2" src="A.llaveros/Pikachu/Pikachu-3.png" crossorigin="anonymous" />
+          <img id="pikachu3" src="A.llaveros/Pikachu/Pikachu-4.png" crossorigin="anonymous" />
+          <img id="pikachu4" src="A.llaveros/Pikachu/Pikachu-5.png" crossorigin="anonymous" />
+          <img id="pikachu5" src="A.llaveros/Pikachu/Pikachu-6.png" crossorigin="anonymous" />
+          <img id="pikachu6" src="A.llaveros/Pikachu/Pikachu-7.png" crossorigin="anonymous" />
         </a-assets>
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
+        <!-- Animación de Eevee (targetIndex: 0) -->
         <a-entity mindar-image-target="targetIndex: 0">
           <a-image
-            id="anim-image"
-            src="#frame0"
+            id="eevee-image"
+            src="#eevee0"
             position="0 0 0"
             width="1"
             height="1"
-            frame-animation
+            frame-animation="frames: eevee"
           ></a-image>
         </a-entity>
 
-        <!-- Script para animar los frames -->
+        <!-- Animación de Pikachu (targetIndex: 1) -->
+        <a-entity mindar-image-target="targetIndex: 1">
+          <a-image
+            id="pikachu-image"
+            src="#pikachu0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="frames: pikachu"
+          ></a-image>
+        </a-entity>
+
+        <!-- Componente de animación reutilizable -->
         <script>
           AFRAME.registerComponent('frame-animation', {
+            schema: { frames: { type: 'string' } },
             init: function () {
               const image = this.el;
-              const frames = [
-                '#frame0', '#frame1', '#frame2',
-                '#frame3', '#frame4', '#frame5', '#frame6'
-              ];
+              const name = this.data.frames;
+              const frames = Array.from({ length: 7 }, (_, i) => `#${name}${i}`);
               let current = 0;
               this.interval = setInterval(() => {
                 image.setAttribute('src', frames[current]);
                 current = (current + 1) % frames.length;
-              }, 100); // Cambia cada 100 ms
+              }, 150); // Más lento que antes
             },
             remove: function () {
               clearInterval(this.interval);
