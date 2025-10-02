@@ -22,7 +22,7 @@
 
 							<!-- Logo -->
 								<a href="index.html" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Phantom</span>
+									<span class="symbol"><img src="images/Logo_Inkbits.png" alt="" /></span><span class="title">Phantom</span>
 								</a>
 
 							<!-- Nav -->
@@ -40,10 +40,10 @@
 						<h2>Menu</h2>
 						<ul>
 							<li><a href="index.html">Home</a></li>
-							<li><a href="generic.html">Ipsum veroeros</a></li>
-							<li><a href="generic.html">Tempus etiam</a></li>
-							<li><a href="generic.html">Consequat dolor</a></li>
-							<li><a href="elements.html">Elements</a></li>
+							<li><a href="Llaveros.html">Keychains</a></li>
+							<li><a href="Pegatinas.html">Pegatinas</a></li>
+							<li><a href="generic.html">Otros</a></li>
+							<li><a href="elements.html">Otros 1</a></li>
 						</ul>
 					</nav>
 
@@ -54,8 +54,17 @@
 								<h1></h1>
 								<p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
 							</header>
+							<div class="filter-bar" style="margin-bottom:20px;">
+                                <label for="filter">Filter by:</label>
+                                <select id="filter">
+                                    <option value="all">All</option>
+                                    <option value="one piece">One Piece</option>
+                                    <option value="pokemon">Pokemon</option>
+                                    <option value="winx club">Winx Club</option>
+                                </select>
+							</div>
 							<section class="tiles">
-								<article class="style1">
+								<article class="style1" data-tag="one piece">
 									<span class="image">
 										<img src="images/pic01.jpg" alt="" />
 									</span>
@@ -66,7 +75,7 @@
 										</div>
 									</a>
 								</article>
-								<article class="style2">
+								<article class="style2" data-tag="winx club">
 									<span class="image">
 										<img src="images/pic02.jpg" alt="" />
 									</span>
@@ -240,6 +249,21 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+ 				 document.getElementById("filter").addEventListener("change", function() {
+   				 const value = this.value.toLowerCase();
+   				 const tiles = document.querySelectorAll(".tiles article");
+
+    			tiles.forEach(tile => {
+      				const tag = tile.getAttribute("data-tag");
+      				if (value === "all" || (tag && tag.toLowerCase() === value)) {
+       					 tile.style.display = "block";
+     			 } else {
+        				tile.style.display = "none";
+      				}
+   				 });
+ 				 });
+			</script>
 
 	</body>
 </html>
