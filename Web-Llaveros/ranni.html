@@ -19,7 +19,7 @@
   <body>
     <div id="ar-container">
       <a-scene 
-        mindar-image="imageTargetSrc: ../A.llaveros/Frieren/targets.mind; filterMinCF: 0.05; filterBeta: 5; warmupTolerance: 1; missTolerance: 1;" 
+        mindar-image="imageTargetSrc: ../A.llaveros/Ranni/targets.mind; filterMinCF: 0.05; filterBeta: 5; warmupTolerance: 1; missTolerance: 1;" 
         color-space="sRGB"
         embedded
         renderer="colorManagement: true, physicallyCorrectLights"
@@ -28,15 +28,13 @@
       >
         <a-assets>
           <!-- Cargamos los frames de la animación -->
-          <img id="frame0" src="../A.llaveros/Frieren/Frieren-1.png" crossorigin="anonymous" />
-          <img id="frame1" src="../A.llaveros/Frieren/Frieren-2.png" crossorigin="anonymous" />
-          <img id="frame2" src="../A.llaveros/Frieren/Frieren-3.png" crossorigin="anonymous" />
-          <img id="frame3" src="../A.llaveros/Frieren/Frieren-4.png" crossorigin="anonymous" />
-          <img id="frame4" src="../A.llaveros/Frieren/Frieren-5.png" crossorigin="anonymous" />
-          <img id="frame5" src="../A.llaveros/Frieren/Frieren-6.png" crossorigin="anonymous" />
-          <img id="frame6" src="../A.llaveros/Frieren/Frieren-7.png" crossorigin="anonymous" />
-          <img id="frame7" src="../A.llaveros/Frieren/Frieren-8.png" crossorigin="anonymous" />
-          <img id="frame8" src="../A.llaveros/Frieren/Frieren-9.png" crossorigin="anonymous" />
+          <img id="frame0" src="../A.llaveros/Ranni/Ranni-1.png" crossorigin="anonymous" />
+          <img id="frame1" src="../A.llaveros/Ranni/Ranni-2.png" crossorigin="anonymous" />
+          <img id="frame2" src="../A.llaveros/Ranni/Ranni-3.png" crossorigin="anonymous" />
+          <img id="frame3" src="../A.llaveros/Ranni/Ranni-4.png" crossorigin="anonymous" />
+          <img id="frame4" src="../A.llaveros/Ranni/Ranni-5.png" crossorigin="anonymous" />
+          <img id="frame5" src="../A.llaveros/Ranni/Ranni-6.png" crossorigin="anonymous" />
+          <img id="frame6" src="../A.llaveros/Ranni/Ranni-7.png" crossorigin="anonymous" />
         </a-assets>
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
@@ -61,7 +59,7 @@
               const frames = [
                 '#frame0', '#frame1', '#frame2',
                 '#frame3', '#frame4', '#frame5',
-                '#frame6', '#frame7', '#frame8'
+                '#frame6',
               ];
               let current = 0;
               this.interval = setInterval(() => {

@@ -12,14 +12,14 @@
 
     <style>
       body { margin: 0; overflow: hidden; }
-      #ar-container { width: 100%; height: 100%; }
+      #ar-container { width: 100vh; height: 100vh; }
     </style>
   </head>
 
   <body>
     <div id="ar-container">
       <a-scene 
-        mindar-image="imageTargetSrc: A.llaveros/Eevee/targets.mind; filterMinCF: 0.05; filterBeta: 5; warmupTolerance: 1; missTolerance: 1;" 
+        mindar-image="imageTargetSrc: ../A.llaveros/Eevee/targets.mind; filterMinCF: 0.05; filterBeta: 5; warmupTolerance: 1; missTolerance: 1;" 
         color-space="sRGB"
         embedded
         renderer="colorManagement: true, physicallyCorrectLights"
@@ -28,13 +28,13 @@
       >
         <a-assets>
           <!-- Cargamos los frames de la animación -->
-          <img id="frame0" src="A.llaveros/Eevee/Eevee-1.png" crossorigin="anonymous" />
-          <img id="frame1" src="A.llaveros/Eevee/Eevee-2.png" crossorigin="anonymous" />
-          <img id="frame2" src="A.llaveros/Eevee/Eevee-3.png" crossorigin="anonymous" />
-          <img id="frame3" src="A.llaveros/Eevee/Eevee-4.png" crossorigin="anonymous" />
-          <img id="frame4" src="A.llaveros/Eevee/Eevee-5.png" crossorigin="anonymous" />
-          <img id="frame5" src="A.llaveros/Eevee/Eevee-6.png" crossorigin="anonymous" />
-          <img id="frame6" src="A.llaveros/Eevee/Eevee-7.png" crossorigin="anonymous" />
+          <img id="frame0" src="../A.llaveros/Eevee/Eevee-1.png" crossorigin="anonymous" />
+          <img id="frame1" src="../A.llaveros/Eevee/Eevee-2.png" crossorigin="anonymous" />
+          <img id="frame2" src="../A.llaveros/Eevee/Eevee-3.png" crossorigin="anonymous" />
+          <img id="frame3" src="../A.llaveros/Eevee/Eevee-4.png" crossorigin="anonymous" />
+          <img id="frame4" src="../A.llaveros/Eevee/Eevee-5.png" crossorigin="anonymous" />
+          <img id="frame5" src="../A.llaveros/Eevee/Eevee-6.png" crossorigin="anonymous" />
+          <img id="frame6" src="../A.llaveros/Eevee/Eevee-7.png" crossorigin="anonymous" />
         </a-assets>
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
@@ -55,6 +55,7 @@
           AFRAME.registerComponent('frame-animation', {
             init: function () {
               const image = this.el;
+              // AFEGIR FRAMES IMPORTANT
               const frames = [
                 '#frame0', '#frame1', '#frame2',
                 '#frame3', '#frame4', '#frame5', '#frame6'
@@ -76,6 +77,7 @@
             target.addEventListener("targetFound", () => {
               const loader = document.querySelector("mindar-ui-loading");
               if (loader) loader.style.display = "none";
+              console.log("Target found!")
             });
           });
         </script>
