@@ -44,8 +44,8 @@
             id="anim-image"
             src="#frame0"
             position="0 0 0"
-            width="1.1"
-            height="1.1"
+            width="1"
+            height="1"
             frame-animation
             animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
             animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
@@ -95,7 +95,7 @@
             });
 
             target.addEventListener('targetLost', () => {
-              img.emit('shrink');
+              img.emit('shrink'); 
             });
           });
         </script>
