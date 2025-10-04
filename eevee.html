@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MindAR Secuencia PNG Animada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- MindAR y A-Frame -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+
+    <style>
+      body { margin: 0; overflow: hidden; }
+      #ar-container { width: 100vw; height: 100vh; }
+    </style>
+  </head>
+
+  <body>
+    <div id="ar-container">
+      <a-scene 
+        mindar-image="imageTargetSrc: A.llaveros/Eevee/targets.mind; filterMinCF: 0.05; filterBeta: 5;"
+        color-space="sRGB"
+        embedded
+        renderer="colorManagement: true, physicallyCorrectLights"
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: true"
+      >
+        <a-assets>
+          <!-- Frames de la animación -->
+          <img id="frame0" src="A.llaveros/Eevee/Eevee-1.png" />
+          <img id="frame1" src="A.llaveros/Eevee/Eevee-2.png" />
+          <img id="frame2" src="A.llaveros/Eevee/Eevee-3.png" />
+          <img id="frame3" src="A.llaveros/Eevee/Eevee-4.png" />
+          <img id="frame4" src="A.llaveros/Eevee/Eevee-5.png" />
+          <img id="frame5" src="A.llaveros/Eevee/Eevee-6.png" />
+          <img id="frame6" src="A.llaveros/Eevee/Eevee-7.png" />
+        </a-assets>
+
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+        <!-- Target -->
+        <a-entity mindar-image-target="targetIndex: 0" id="eevee-target">
+          <a-image
+            id="anim-image"
+            src="#frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+          ></a-image>
+        </a-entity>
+
+        <!-- Script -->
+        <script>
+          AFRAME.registerComponent('frame-animation', {
+            schema: { frames: { type: 'array' }, interval: { type: 'int', default: 150 } },
+            init: function () {
+              this.current = 0;
+              this.intervalId = null;
+            },
+            playAnimation: function (frames) {
+              if (this.intervalId) return;
+              this.intervalId = setInterval(() => {
+                this.el.setAttribute('src', frames[this.current]);
+                this.current = (this.current + 1) % frames.length;
+              }, this.data.interval);
+            },
+            stopAnimation: function () {
+              if (this.intervalId) {
+                clearInterval(this.intervalId);
+                this.intervalId = null;
+              }
+            },
+            remove: function () {
+              this.stopAnimation();
+            }
+          });
+
+          document.addEventListener("DOMContentLoaded", () => {
+            const target = document.querySelector("#eevee-target");
+            const animImage = document.querySelector("#anim-image");
+            const frames = ["#frame0","#frame1","#frame2","#frame3","#frame4","#frame5","#frame6"];
+
+            target.addEventListener("targetFound", () => {
+              animImage.setAttribute("frame-animation", "interval:150");
+              animImage.components["frame-animation"].playAnimation(frames);
+            });
+
+            target.addEventListener("targetLost", () => {
+              if (animImage.components["frame-animation"]) {
+                animImage.components["frame-animation"].stopAnimation();
+              }
+            });
+          });
+        </script>
+      </a-scene>
+    </div>
+  </body>
+</html>
