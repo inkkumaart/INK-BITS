@@ -47,6 +47,8 @@
             width="1"
             height="1"
             frame-animation
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
           ></a-image>
         </a-entity>
 
@@ -59,7 +61,7 @@
               const frames = [
                 '#frame0', '#frame1', '#frame2',
                 '#frame3', '#frame4', '#frame5',
-                '#frame6',
+                '#frame6'
               ];
               let current = 0;
               this.interval = setInterval(() => {
@@ -79,6 +81,21 @@
               const loader = document.querySelector("mindar-ui-loading");
               if (loader) loader.style.display = "none";
               console.log("Target found!")
+            });
+          });
+        </script>
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            const target = document.querySelector("#target");
+            const img = document.querySelector("#anim-image");
+            if (!target || !img) return;
+
+            target.addEventListener('targetFound', () => {
+              img.emit('enlarge');
+            });
+
+            target.addEventListener('targetLost', () => {
+              img.emit('shrink');
             });
           });
         </script>

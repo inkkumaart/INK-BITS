@@ -92,15 +92,12 @@
             const img = document.querySelector("#anim-image");
             if (!target || !img) return;
 
-            // If your image had a different initial scale, you'll want to calculate the proper "to" values.
-            // This example assumes initial scale is 1 1 1.
-
             target.addEventListener('targetFound', () => {
-              img.emit('enlarge'); // runs the animation__enlarge
+              img.emit('enlarge');
             });
 
             target.addEventListener('targetLost', () => {
-              img.emit('shrink');  // runs the animation__shrink
+              img.emit('shrink'); 
             });
           });
         </script>
