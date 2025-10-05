@@ -19,7 +19,7 @@
   <body>
     <div id="ar-container">
       <a-scene 
-        mindar-image="imageTargetSrc: ../A.llaveros/Pikmin/targets.mind; filterMinCF: 0.05; filterBeta: 5; warmupTolerance: 1; missTolerance: 1;" 
+        mindar-image="imageTargetSrc: ../A.llaveros/SailorMoon/targets.mind; filterMinCF: 0.001; filterBeta: 100; warmupTolerance: 1; missTolerance: 1;" 
         color-space="sRGB"
         embedded
         renderer="colorManagement: true, physicallyCorrectLights"
@@ -28,26 +28,26 @@
       >
         <a-assets>
           <!-- Cargamos los frames de la animación -->
-          <img id="frame0" src="../A.llaveros/Pikmin/Pikmin-1.png" crossorigin="anonymous" />
-          <img id="frame1" src="../A.llaveros/Pikmin/Pikmin-2.png" crossorigin="anonymous" />
-          <img id="frame2" src="../A.llaveros/Pikmin/Pikmin-3.png" crossorigin="anonymous" />
-          <img id="frame3" src="../A.llaveros/Pikmin/Pikmin-4.png" crossorigin="anonymous" />
-          <img id="frame4" src="../A.llaveros/Pikmin/Pikmin-5.png" crossorigin="anonymous" />
-          <img id="frame5" src="../A.llaveros/Pikmin/Pikmin-6.png" crossorigin="anonymous" />
-          <img id="frame6" src="../A.llaveros/Pikmin/Pikmin-7.png" crossorigin="anonymous" />
+          <img id="frame0" src="../A.llaveros/SailorMoon/Sailor_Moon-1.png" crossorigin="anonymous" />
+          <img id="frame1" src="../A.llaveros/SailorMoon/Sailor_Moon-2.png" crossorigin="anonymous" />
+          <img id="frame2" src="../A.llaveros/SailorMoon/Sailor_Moon-3.png" crossorigin="anonymous" />
+          <img id="frame3" src="../A.llaveros/SailorMoon/Sailor_Moon-4.png" crossorigin="anonymous" />
+          <img id="frame4" src="../A.llaveros/SailorMoon/Sailor_Moon-5.png" crossorigin="anonymous" />
+          <img id="frame5" src="../A.llaveros/SailorMoon/Sailor_Moon-6.png" crossorigin="anonymous" />
+          <img id="frame6" src="../A.llaveros/SailorMoon/Sailor_Moon-7.png" crossorigin="anonymous" />
         </a-assets>
 
-        <a-camera position="0.15 0.2 0" look-controls="enabled: false"></a-camera>
+        <a-camera position="0 0.05 0" look-controls="enabled: false"></a-camera>
 
         <a-entity mindar-image-target="targetIndex: 0" id="target">
           <a-image
             id="anim-image"
             src="#frame0"
-            position="0.15 0.2 0"
-            width="1.2"
-            height="1.4"
+            position="0 0.05 0"
+            width="1"
+            height="1"
             frame-animation
-            animation__enlarge="property: scale; to: 1.2 1.4 1.2; dur: 300; startEvents: enlarge"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
             animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
           ></a-image>
         </a-entity>
