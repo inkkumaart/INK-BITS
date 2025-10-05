@@ -19,7 +19,7 @@
   <body>
     <div id="ar-container">
       <a-scene 
-        mindar-image="imageTargetSrc: ../A.llaveros/Eevee/targets.mind; filterMinCF: 0.05; filterBeta: 5; warmupTolerance: 1; missTolerance: 1;" 
+        mindar-image="imageTargetSrc: ../A.llaveros/Link/targets.mind; filterMinCF: 0.0001; filterBeta: 10s; warmupTolerance: 1; missTolerance: 5;" 
         color-space="sRGB"
         embedded
         renderer="colorManagement: true, physicallyCorrectLights"
@@ -28,22 +28,22 @@
       >
         <a-assets>
           <!-- Cargamos los frames de la animación -->
-          <img id="frame0" src="../A.llaveros/Eevee/Eevee-1.png" crossorigin="anonymous" />
-          <img id="frame1" src="../A.llaveros/Eevee/Eevee-2.png" crossorigin="anonymous" />
-          <img id="frame2" src="../A.llaveros/Eevee/Eevee-3.png" crossorigin="anonymous" />
-          <img id="frame3" src="../A.llaveros/Eevee/Eevee-4.png" crossorigin="anonymous" />
-          <img id="frame4" src="../A.llaveros/Eevee/Eevee-5.png" crossorigin="anonymous" />
-          <img id="frame5" src="../A.llaveros/Eevee/Eevee-6.png" crossorigin="anonymous" />
-          <img id="frame6" src="../A.llaveros/Eevee/Eevee-7.png" crossorigin="anonymous" />
+          <img id="frame0" src="../A.llaveros/Link/Link-1.png" crossorigin="anonymous" />
+          <img id="frame1" src="../A.llaveros/Link/Link-2.png" crossorigin="anonymous" />
+          <img id="frame2" src="../A.llaveros/Link/Link-3.png" crossorigin="anonymous" />
+          <img id="frame3" src="../A.llaveros/Link/Link-4.png" crossorigin="anonymous" />
+          <img id="frame4" src="../A.llaveros/Link/Link-5.png" crossorigin="anonymous" />
+          <img id="frame5" src="../A.llaveros/Link/Link-6.png" crossorigin="anonymous" />
+          <img id="frame6" src="../A.llaveros/Link/Link-7.png" crossorigin="anonymous" />
         </a-assets>
 
-        <a-camera position="0 0.2 0" look-controls="enabled: false"></a-camera>
+        <a-camera position="0.1 0 0" look-controls="enabled: false"></a-camera>
 
         <a-entity mindar-image-target="targetIndex: 0" id="target">
           <a-image
             id="anim-image"
             src="#frame0"
-            position="0 0.2 0"
+            position="0.1 0 0"
             width="1"
             height="1"
             frame-animation
@@ -95,7 +95,7 @@
             });
 
             target.addEventListener('targetLost', () => {
-              img.emit('shrink');
+              img.emit('shrink'); 
             });
           });
         </script>
