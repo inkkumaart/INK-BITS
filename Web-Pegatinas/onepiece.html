@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MindAR Secuencia PNG Animada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- MindAR y A-Frame -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+
+    <style>
+      body { margin: 0; overflow: hidden; }
+      #ar-container { width: 100vh; height: 100vh; }
+    </style>
+  </head>
+
+  <body>
+    <div id="ar-container">
+      <a-scene 
+        mindar-image="imageTargetSrc: ../A.Pegatinas/Onepiece/targets.mind; maxTrack: 5; filterMinCF: 0.001; filterBeta: 10; warmupTolerance: 5; missTolerance: 5;" 
+        color-space="sRGB"
+        embedded
+        renderer="colorManagement: true, physicallyCorrectLights"
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: true"
+      >
+        <a-assets>
+          <!-- Cargamos los frames de la animación -->
+          <img id="luffy-frame0" src="../A.Pegatinas/Onepiece/Luffy/Luffy-1.png" crossorigin="anonymous" />
+          <img id="luffy-frame1" src="../A.Pegatinas/Onepiece/Luffy/Luffy-2.png" crossorigin="anonymous" />
+          <img id="luffy-frame2" src="../A.Pegatinas/Onepiece/Luffy/Luffy-3.png" crossorigin="anonymous" />
+          <img id="luffy-frame3" src="../A.Pegatinas/Onepiece/Luffy/Luffy-4.png" crossorigin="anonymous" />
+          <img id="luffy-frame4" src="../A.Pegatinas/Onepiece/Luffy/Luffy-5.png" crossorigin="anonymous" />
+          <img id="luffy-frame5" src="../A.Pegatinas/Onepiece/Luffy/Luffy-6.png" crossorigin="anonymous" />
+          <img id="luffy-frame6" src="../A.Pegatinas/Onepiece/Luffy/Luffy-7.png" crossorigin="anonymous" />
+
+          <img id="zoro-frame0" src="../A.Pegatinas/Onepiece/Zoro/Zoro-1.png" crossorigin="anonymous" />
+          <img id="zoro-frame1" src="../A.Pegatinas/Onepiece/Zoro/Zoro-2.png" crossorigin="anonymous" />
+          <img id="zoro-frame2" src="../A.Pegatinas/Onepiece/Zoro/Zoro-3.png" crossorigin="anonymous" />
+          <img id="zoro-frame3" src="../A.Pegatinas/Onepiece/Zoro/Zoro-4.png" crossorigin="anonymous" />
+          <img id="zoro-frame4" src="../A.Pegatinas/Onepiece/Zoro/Zoro-5.png" crossorigin="anonymous" />
+          <img id="zoro-frame5" src="../A.Pegatinas/Onepiece/Zoro/Zoro-6.png" crossorigin="anonymous" />
+          <img id="zoro-frame6" src="../A.Pegatinas/Onepiece/Zoro/Zoro-7.png" crossorigin="anonymous" />
+
+          <img id="nami-frame0" src="../A.Pegatinas/Onepiece/Nami/Nami-1.png" crossorigin="anonymous" />
+          <img id="nami-frame1" src="../A.Pegatinas/Onepiece/Nami/Nami-2.png" crossorigin="anonymous" />
+          <img id="nami-frame2" src="../A.Pegatinas/Onepiece/Nami/Nami-3.png" crossorigin="anonymous" />
+          <img id="nami-frame3" src="../A.Pegatinas/Onepiece/Nami/Nami-4.png" crossorigin="anonymous" />
+          <img id="nami-frame4" src="../A.Pegatinas/Onepiece/Nami/Nami-5.png" crossorigin="anonymous" />
+          <img id="nami-frame5" src="../A.Pegatinas/Onepiece/Nami/Nami-6.png" crossorigin="anonymous" />
+          <img id="nami-frame6" src="../A.Pegatinas/Onepiece/Nami/Nami-7.png" crossorigin="anonymous" />
+          <img id="nami-frame7" src="../A.Pegatinas/Onepiece/Nami/Nami-8.png" crossorigin="anonymous" />
+
+          <img id="usopp-frame0" src="../A.Pegatinas/Onepiece/Usopp/Usopp-1.png" crossorigin="anonymous" />
+          <img id="usopp-frame1" src="../A.Pegatinas/Onepiece/Usopp/Usopp-2.png" crossorigin="anonymous" />
+          <img id="usopp-frame2" src="../A.Pegatinas/Onepiece/Usopp/Usopp-3.png" crossorigin="anonymous" />
+          <img id="usopp-frame3" src="../A.Pegatinas/Onepiece/Usopp/Usopp-4.png" crossorigin="anonymous" />
+          <img id="usopp-frame4" src="../A.Pegatinas/Onepiece/Usopp/Usopp-5.png" crossorigin="anonymous" />
+          <img id="usopp-frame5" src="../A.Pegatinas/Onepiece/Usopp/Usopp-6.png" crossorigin="anonymous" />
+          <img id="usopp-frame6" src="../A.Pegatinas/Onepiece/Usopp/Usopp-7.png" crossorigin="anonymous" />
+
+          <img id="sanji-frame0" src="../A.Pegatinas/Onepiece/Sanji/Sanji-1.png" crossorigin="anonymous" />
+          <img id="sanji-frame1" src="../A.Pegatinas/Onepiece/Sanji/Sanji-2.png" crossorigin="anonymous" />
+          <img id="sanji-frame2" src="../A.Pegatinas/Onepiece/Sanji/Sanji-3.png" crossorigin="anonymous" />
+          <img id="sanji-frame3" src="../A.Pegatinas/Onepiece/Sanji/Sanji-4.png" crossorigin="anonymous" />
+          <img id="sanji-frame4" src="../A.Pegatinas/Onepiece/Sanji/Sanji-5.png" crossorigin="anonymous" />
+          <img id="sanji-frame5" src="../A.Pegatinas/Onepiece/Sanji/Sanji-6.png" crossorigin="anonymous" />
+          <img id="sanji-frame6" src="../A.Pegatinas/Onepiece/Sanji/Sanji-7.png" crossorigin="anonymous" />
+        </a-assets>
+
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+
+        <!-- Una a-entity para cada uno, solo cambia la ID -->
+        <a-entity mindar-image-target="targetIndex: 0" id="target-luffy">
+          <a-image
+            id="anim-image-luffy"
+            src="#luffy-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: luffy; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 1" id="target-zoro">
+          <a-image
+            id="anim-image-zoro"
+            src="#zoro-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: zoro; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 2" id="target-nami">
+          <a-image
+            id="anim-image-nami"
+            src="#nami-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: nami; count: 8"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 3" id="target-usopp">
+          <a-image
+            id="anim-image-usopp"
+            src="#usopp-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: usopp; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>    
+
+        <a-entity mindar-image-target="targetIndex: 4" id="target-sanji">
+          <a-image
+            id="anim-image-sanji"
+            src="#sanji-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: sanji; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>   
+
+        <!-- Script para animar los frames -->
+        <script>
+          AFRAME.registerComponent('frame-animation', {
+            schema: {
+              prefix: {type: 'string'},
+              count: {type: 'int'}
+            },
+            init: function () {
+              this.frames = [];
+              for (let i = 0; i < this.data.count; i++) {
+                this.frames.push(`#${this.data.prefix}-frame${i}`);
+              }
+              this.current = 0;
+              this.interval = null;
+
+              // Start animation only when parent target is visible
+              this.el.sceneEl.addEventListener("targetFound", (e) => {
+                if (this.el.parentElement === e.target && !this.interval) {
+                  this.start();
+                }
+              });
+
+              this.el.sceneEl.addEventListener("targetLost", (e) => {
+                if (this.el.parentElement === e.target) {
+                  this.stop();
+                }
+              });
+            },
+            start: function () {
+              this.interval = setInterval(() => {
+                this.el.setAttribute("src", this.frames[this.current]);
+                this.current = (this.current + 1) % this.frames.length;
+              }, 150);
+            },
+            stop: function () {
+              if (this.interval) {
+                clearInterval(this.interval);
+                this.interval = null;
+                this.current = 0; // optional: reset to first frame
+              }
+            },
+            remove: function () {
+              this.stop();
+            }
+          });
+        </script>
+        <script>
+
+          document.addEventListener("DOMContentLoaded", () => {
+            const targets = [
+              { target: "#target-luffy", image: "#anim-image-luffy" },
+              { target: "#target-zoro", image: "#anim-image-zoro" },
+              { target: "#target-nami", image: "#anim-image-nami" },
+              { target: "#target-usopp", image: "#anim-image-usopp" },
+              { target: "#target-sanji", image: "#anim-image-sanji" }
+            ];
+
+            targets.forEach(({ target, image }) => {
+              const t = document.querySelector(target);
+              const img = document.querySelector(image);
+              if (!t || !img) return;
+
+              t.addEventListener('targetFound', () => {
+                img.emit('enlarge');
+              });
+
+              t.addEventListener('targetLost', () => {
+                img.emit('shrink');
+              });
+            });
+          });
+        </script>
+      </a-scene>
+    </div>
+  </body>
+</html>
