@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MindAR Secuencia PNG Animada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- MindAR y A-Frame -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+
+    <style>
+      body { margin: 0; overflow: hidden; }
+      #ar-container { width: 100vh; height: 100vh; }
+    </style>
+  </head>
+
+  <body>
+    <div id="ar-container">
+      <a-scene 
+        mindar-image="imageTargetSrc: ../A.Pegatinas/Botw/targets.mind; maxTrack: 5; filterMinCF: 0.001; filterBeta: 10; warmupTolerance: 5; missTolerance: 5;" 
+        color-space="sRGB"
+        embedded
+        renderer="colorManagement: true, physicallyCorrectLights"
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: true"
+      >
+        <a-assets>
+          <!-- Cargamos los frames de la animación -->
+          <img id="link-frame0" src="../A.Pegatinas/Botw/Link/Link-1.png" crossorigin="anonymous" />
+          <img id="link-frame1" src="../A.Pegatinas/Botw/Link/Link-2.png" crossorigin="anonymous" />
+          <img id="link-frame2" src="../A.Pegatinas/Botw/Link/Link-3.png" crossorigin="anonymous" />
+          <img id="link-frame3" src="../A.Pegatinas/Botw/Link/Link-4.png" crossorigin="anonymous" />
+          <img id="link-frame4" src="../A.Pegatinas/Botw/Link/Link-5.png" crossorigin="anonymous" />
+          <img id="link-frame5" src="../A.Pegatinas/Botw/Link/Link-6.png" crossorigin="anonymous" />
+          <img id="link-frame6" src="../A.Pegatinas/Botw/Link/Link-7.png" crossorigin="anonymous" />
+
+          <img id="zelda-frame0" src="../A.Pegatinas/Botw/Zelda/Zelda-1.png" crossorigin="anonymous" />
+          <img id="zelda-frame1" src="../A.Pegatinas/Botw/Zelda/Zelda-2.png" crossorigin="anonymous" />
+          <img id="zelda-frame2" src="../A.Pegatinas/Botw/Zelda/Zelda-3.png" crossorigin="anonymous" />
+          <img id="zelda-frame3" src="../A.Pegatinas/Botw/Zelda/Zelda-4.png" crossorigin="anonymous" />
+          <img id="zelda-frame4" src="../A.Pegatinas/Botw/Zelda/Zelda-5.png" crossorigin="anonymous" />
+          <img id="zelda-frame5" src="../A.Pegatinas/Botw/Zelda/Zelda-6.png" crossorigin="anonymous" />
+          <img id="zelda-frame6" src="../A.Pegatinas/Botw/Zelda/Zelda-7.png" crossorigin="anonymous" />
+
+          <img id="mipha-frame0" src="../A.Pegatinas/Botw/Mipha/Mipha-1.png" crossorigin="anonymous" />
+          <img id="mipha-frame1" src="../A.Pegatinas/Botw/Mipha/Mipha-2.png" crossorigin="anonymous" />
+          <img id="mipha-frame2" src="../A.Pegatinas/Botw/Mipha/Mipha-3.png" crossorigin="anonymous" />
+          <img id="mipha-frame3" src="../A.Pegatinas/Botw/Mipha/Mipha-4.png" crossorigin="anonymous" />
+          <img id="mipha-frame4" src="../A.Pegatinas/Botw/Mipha/Mipha-5.png" crossorigin="anonymous" />
+          <img id="mipha-frame5" src="../A.Pegatinas/Botw/Mipha/Mipha-6.png" crossorigin="anonymous" />
+          <img id="mipha-frame6" src="../A.Pegatinas/Botw/Mipha/Mipha-7.png" crossorigin="anonymous" />
+
+          <img id="revali-frame0" src="../A.Pegatinas/Botw/Revali/Revali-1.png" crossorigin="anonymous" />
+          <img id="revali-frame1" src="../A.Pegatinas/Botw/Revali/Revali-2.png" crossorigin="anonymous" />
+          <img id="revali-frame2" src="../A.Pegatinas/Botw/Revali/Revali-3.png" crossorigin="anonymous" />
+          <img id="revali-frame3" src="../A.Pegatinas/Botw/Revali/Revali-4.png" crossorigin="anonymous" />
+          <img id="revali-frame4" src="../A.Pegatinas/Botw/Revali/Revali-5.png" crossorigin="anonymous" />
+          <img id="revali-frame5" src="../A.Pegatinas/Botw/Revali/Revali-6.png" crossorigin="anonymous" />
+          <img id="revali-frame6" src="../A.Pegatinas/Botw/Revali/Revali-7.png" crossorigin="anonymous" />
+
+          <img id="urbosa-frame0" src="../A.Pegatinas/Botw/Urbosa/Urbosa-1.png" crossorigin="anonymous" />
+          <img id="urbosa-frame1" src="../A.Pegatinas/Botw/Urbosa/Urbosa-2.png" crossorigin="anonymous" />
+          <img id="urbosa-frame2" src="../A.Pegatinas/Botw/Urbosa/Urbosa-3.png" crossorigin="anonymous" />
+          <img id="urbosa-frame3" src="../A.Pegatinas/Botw/Urbosa/Urbosa-4.png" crossorigin="anonymous" />
+          <img id="urbosa-frame4" src="../A.Pegatinas/Botw/Urbosa/Urbosa-5.png" crossorigin="anonymous" />
+          <img id="urbosa-frame5" src="../A.Pegatinas/Botw/Urbosa/Urbosa-6.png" crossorigin="anonymous" />
+          <img id="urbosa-frame6" src="../A.Pegatinas/Botw/Urbosa/Urbosa-7.png" crossorigin="anonymous" />
+        </a-assets>
+
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+
+        <!-- Una a-entity para cada uno, solo cambia la ID -->
+        <a-entity mindar-image-target="targetIndex: 0" id="target-link">
+          <a-image
+            id="anim-image-link"
+            src="#link-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: link; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 1" id="target-zelda">
+          <a-image
+            id="anim-image-zelda"
+            src="#zelda-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: zelda; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 2" id="target-urbosa">
+          <a-image
+            id="anim-image-urbosa"
+            src="#-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: urbosa; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 3" id="target-revali">
+          <a-image
+            id="anim-image-revali"
+            src="#revali-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: revali; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>    
+
+        <a-entity mindar-image-target="targetIndex: 4" id="target-mipha">
+          <a-image
+            id="anim-image-urbosa"
+            src="#mipha-frame0"
+            position="0 0 0"
+            width="1.4"
+            height="1.4"
+            frame-animation="prefix: mipha; count: 7"
+            animation__enlarge="property: scale; to: 1.5 1.5 1.5; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>   
+
+        <!-- Script para animar los frames -->
+        <script>
+          AFRAME.registerComponent('frame-animation', {
+            schema: {
+              prefix: {type: 'string'},
+              count: {type: 'int'}
+            },
+            init: function () {
+              this.frames = [];
+              for (let i = 0; i < this.data.count; i++) {
+                this.frames.push(`#${this.data.prefix}-frame${i}`);
+              }
+              this.current = 0;
+              this.interval = null;
+
+              // Start animation only when parent target is visible
+              this.el.sceneEl.addEventListener("targetFound", (e) => {
+                if (this.el.parentElement === e.target && !this.interval) {
+                  this.start();
+                }
+              });
+
+              this.el.sceneEl.addEventListener("targetLost", (e) => {
+                if (this.el.parentElement === e.target) {
+                  this.stop();
+                }
+              });
+            },
+            start: function () {
+              this.interval = setInterval(() => {
+                this.el.setAttribute("src", this.frames[this.current]);
+                this.current = (this.current + 1) % this.frames.length;
+              }, 150);
+            },
+            stop: function () {
+              if (this.interval) {
+                clearInterval(this.interval);
+                this.interval = null;
+                this.current = 0; // optional: reset to first frame
+              }
+            },
+            remove: function () {
+              this.stop();
+            }
+          });
+        </script>
+        <script>
+
+          document.addEventListener("DOMContentLoaded", () => {
+            const targets = [
+              { target: "#target-link", image: "#anim-image-link" },
+              { target: "#target-zelda", image: "#anim-image-zelda" },
+              { target: "#target-mipha", image: "#anim-image-mipha" },
+              { target: "#target-revali", image: "#anim-image-revali" },
+              { target: "#target-urbosa", image: "#anim-image-urbosa" }
+            ];
+
+            targets.forEach(({ target, image }) => {
+              const t = document.querySelector(target);
+              const img = document.querySelector(image);
+              if (!t || !img) return;
+
+              t.addEventListener('targetFound', () => {
+                img.emit('enlarge');
+              });
+
+              t.addEventListener('targetLost', () => {
+                img.emit('shrink');
+              });
+            });
+          });
+        </script>
+      </a-scene>
+    </div>
+  </body>
+</html>

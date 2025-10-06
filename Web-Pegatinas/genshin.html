@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MindAR Secuencia PNG Animada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- MindAR y A-Frame -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+
+    <style>
+      body { margin: 0; overflow: hidden; }
+      #ar-container { width: 100vh; height: 100vh; }
+    </style>
+  </head>
+
+  <body>
+    <div id="ar-container">
+      <a-scene 
+        mindar-image="imageTargetSrc: ../A.Pegatinas/Genshin/targets.mind; maxTrack: 5; filterMinCF: 0.001; filterBeta: 10; warmupTolerance: 5; missTolerance: 5;" 
+        color-space="sRGB"
+        embedded
+        renderer="colorManagement: true, physicallyCorrectLights"
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: true"
+      >
+        <a-assets>
+          <!-- Cargamos los frames de la animación -->
+          <img id="itto-frame0" src="../A.Pegatinas/Genshin/Itto/Itto-1.png" crossorigin="anonymous" />
+          <img id="itto-frame1" src="../A.Pegatinas/Genshin/Itto/Itto-2.png" crossorigin="anonymous" />
+          <img id="itto-frame2" src="../A.Pegatinas/Genshin/Itto/Itto-3.png" crossorigin="anonymous" />
+          <img id="itto-frame3" src="../A.Pegatinas/Genshin/Itto/Itto-4.png" crossorigin="anonymous" />
+          <img id="itto-frame4" src="../A.Pegatinas/Genshin/Itto/Itto-5.png" crossorigin="anonymous" />
+          <img id="itto-frame5" src="../A.Pegatinas/Genshin/Itto/Itto-6.png" crossorigin="anonymous" />
+          <img id="itto-frame6" src="../A.Pegatinas/Genshin/Itto/Itto-7.png" crossorigin="anonymous" />
+
+          <img id="miko-frame0" src="../A.Pegatinas/Genshin/Miko/Miko-1.png" crossorigin="anonymous" />
+          <img id="miko-frame1" src="../A.Pegatinas/Genshin/Miko/Miko-2.png" crossorigin="anonymous" />
+          <img id="miko-frame2" src="../A.Pegatinas/Genshin/Miko/Miko-3.png" crossorigin="anonymous" />
+          <img id="miko-frame3" src="../A.Pegatinas/Genshin/Miko/Miko-4.png" crossorigin="anonymous" />
+          <img id="miko-frame4" src="../A.Pegatinas/Genshin/Miko/Miko-5.png" crossorigin="anonymous" />
+          <img id="miko-frame5" src="../A.Pegatinas/Genshin/Miko/Miko-6.png" crossorigin="anonymous" />
+          <img id="miko-frame6" src="../A.Pegatinas/Genshin/Miko/Miko-7.png" crossorigin="anonymous" />
+
+          <img id="shogun-frame0" src="../A.Pegatinas/Genshin/Shogun/Shogun-1.png" crossorigin="anonymous" />
+          <img id="shogun-frame1" src="../A.Pegatinas/Genshin/Shogun/Shogun-2.png" crossorigin="anonymous" />
+          <img id="shogun-frame2" src="../A.Pegatinas/Genshin/Shogun/Shogun-3.png" crossorigin="anonymous" />
+          <img id="shogun-frame3" src="../A.Pegatinas/Genshin/Shogun/Shogun-4.png" crossorigin="anonymous" />
+          <img id="shogun-frame4" src="../A.Pegatinas/Genshin/Shogun/Shogun-5.png" crossorigin="anonymous" />
+          <img id="shogun-frame5" src="../A.Pegatinas/Genshin/Shogun/Shogun-6.png" crossorigin="anonymous" />
+          <img id="shogun-frame6" src="../A.Pegatinas/Genshin/Shogun/Shogun-7.png" crossorigin="anonymous" />
+
+          <img id="tartaglia-frame0" src="../A.Pegatinas/Genshin/Tartaglia/Childe-1.png" crossorigin="anonymous" />
+          <img id="tartaglia-frame1" src="../A.Pegatinas/Genshin/Tartaglia/Childe-2.png" crossorigin="anonymous" />
+          <img id="tartaglia-frame2" src="../A.Pegatinas/Genshin/Tartaglia/Childe-3.png" crossorigin="anonymous" />
+          <img id="tartaglia-frame3" src="../A.Pegatinas/Genshin/Tartaglia/Childe-4.png" crossorigin="anonymous" />
+          <img id="tartaglia-frame4" src="../A.Pegatinas/Genshin/Tartaglia/Childe-5.png" crossorigin="anonymous" />
+          <img id="tartaglia-frame5" src="../A.Pegatinas/Genshin/Tartaglia/Childe-6.png" crossorigin="anonymous" />
+          <img id="tartaglia-frame6" src="../A.Pegatinas/Genshin/Tartaglia/Childe-7.png" crossorigin="anonymous" />
+
+          <img id="venti-frame0" src="../A.Pegatinas/Genshin/Venti/Venti-1.png" crossorigin="anonymous" />
+          <img id="venti-frame1" src="../A.Pegatinas/Genshin/Venti/Venti-2.png" crossorigin="anonymous" />
+          <img id="venti-frame2" src="../A.Pegatinas/Genshin/Venti/Venti-3.png" crossorigin="anonymous" />
+          <img id="venti-frame3" src="../A.Pegatinas/Genshin/Venti/Venti-4.png" crossorigin="anonymous" />
+          <img id="venti-frame4" src="../A.Pegatinas/Genshin/Venti/Venti-5.png" crossorigin="anonymous" />
+          <img id="venti-frame5" src="../A.Pegatinas/Genshin/Venti/Venti-6.png" crossorigin="anonymous" />
+          <img id="venti-frame6" src="../A.Pegatinas/Genshin/Venti/Venti-7.png" crossorigin="anonymous" />
+        </a-assets>
+
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+
+        <!-- Una a-entity para cada uno, solo cambia la ID -->
+        <a-entity mindar-image-target="targetIndex: 0" id="target-itto">
+          <a-image
+            id="anim-image-itto"
+            src="#itto-frame0"
+            position="0.15 -0.3 0"
+            width="1"
+            height="1.5"
+            frame-animation="prefix: itto; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.4 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 1" id="target-miko">
+          <a-image
+            id="anim-image-miko"
+            src="#miko-frame0"
+            position="-0.1 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: miko; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 2" id="target-shogun">
+          <a-image
+            id="anim-image-shogun"
+            src="#shogun-frame0"
+            position="0.15 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: shogun; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 3" id="target-tartaglia">
+          <a-image
+            id="anim-image-tartaglia"
+            src="#tartaglia-frame0"
+            position="0 0 0"
+            width="1.3"
+            height="1.3"
+            frame-animation="prefix: tartaglia; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>    
+
+        <a-entity mindar-image-target="targetIndex: 4" id="target-venti">
+          <a-image
+            id="anim-image-venti"
+            src="#venti-frame0"
+            position="0.1 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: venti; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>   
+
+        <!-- Script para animar los frames -->
+        <script>
+          AFRAME.registerComponent('frame-animation', {
+            schema: {
+              prefix: {type: 'string'},
+              count: {type: 'int'}
+            },
+            init: function () {
+              this.frames = [];
+              for (let i = 0; i < this.data.count; i++) {
+                this.frames.push(`#${this.data.prefix}-frame${i}`);
+              }
+              this.current = 0;
+              this.interval = null;
+
+              // Start animation only when parent target is visible
+              this.el.sceneEl.addEventListener("targetFound", (e) => {
+                if (this.el.parentElement === e.target && !this.interval) {
+                  this.start();
+                }
+              });
+
+              this.el.sceneEl.addEventListener("targetLost", (e) => {
+                if (this.el.parentElement === e.target) {
+                  this.stop();
+                }
+              });
+            },
+            start: function () {
+              this.interval = setInterval(() => {
+                this.el.setAttribute("src", this.frames[this.current]);
+                this.current = (this.current + 1) % this.frames.length;
+              }, 150);
+            },
+            stop: function () {
+              if (this.interval) {
+                clearInterval(this.interval);
+                this.interval = null;
+                this.current = 0; // optional: reset to first frame
+              }
+            },
+            remove: function () {
+              this.stop();
+            }
+          });
+        </script>
+        <script>
+
+          document.addEventListener("DOMContentLoaded", () => {
+            const targets = [
+              { target: "#target-itto", image: "#anim-image-itto" },
+              { target: "#target-miko", image: "#anim-image-miko" },
+              { target: "#target-shogun", image: "#anim-image-shogun" },
+              { target: "#target-tartaglia", image: "#anim-image-tartaglia" },
+              { target: "#target-venti", image: "#anim-image-venti" }
+            ];
+
+            targets.forEach(({ target, image }) => {
+              const t = document.querySelector(target);
+              const img = document.querySelector(image);
+              if (!t || !img) return;
+
+              t.addEventListener('targetFound', () => {
+                img.emit('enlarge');
+              });
+
+              t.addEventListener('targetLost', () => {
+                img.emit('shrink');
+              });
+            });
+          });
+        </script>
+      </a-scene>
+    </div>
+  </body>
+</html>

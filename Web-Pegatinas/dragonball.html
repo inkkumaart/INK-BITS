@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MindAR Secuencia PNG Animada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- MindAR y A-Frame -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+
+    <style>
+      body { margin: 0; overflow: hidden; }
+      #ar-container { width: 100vh; height: 100vh; }
+    </style>
+  </head>
+
+  <body>
+    <div id="ar-container">
+      <a-scene 
+        mindar-image="imageTargetSrc: ../A.Pegatinas/Dragonball/targets.mind; maxTrack: 5; filterMinCF: 0.001; filterBeta: 10; warmupTolerance: 5; missTolerance: 5;" 
+        color-space="sRGB"
+        embedded
+        renderer="colorManagement: true, physicallyCorrectLights"
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: true"
+      >
+        <a-assets>
+          <!-- Cargamos los frames de la animación -->
+          <img id="goku-frame0" src="../A.Pegatinas/Dragonball/Goku/Goku-1.png" crossorigin="anonymous" />
+          <img id="goku-frame1" src="../A.Pegatinas/Dragonball/Goku/Goku-2.png" crossorigin="anonymous" />
+          <img id="goku-frame2" src="../A.Pegatinas/Dragonball/Goku/Goku-3.png" crossorigin="anonymous" />
+          <img id="goku-frame3" src="../A.Pegatinas/Dragonball/Goku/Goku-4.png" crossorigin="anonymous" />
+          <img id="goku-frame4" src="../A.Pegatinas/Dragonball/Goku/Goku-5.png" crossorigin="anonymous" />
+          <img id="goku-frame5" src="../A.Pegatinas/Dragonball/Goku/Goku-6.png" crossorigin="anonymous" />
+          <img id="goku-frame6" src="../A.Pegatinas/Dragonball/Goku/Goku-7.png" crossorigin="anonymous" />
+
+          <img id="vegetta-frame0" src="../A.Pegatinas/Dragonball/Vegetta/Vegeta-1.png" crossorigin="anonymous" />
+          <img id="vegetta-frame1" src="../A.Pegatinas/Dragonball/Vegetta/Vegeta-2.png" crossorigin="anonymous" />
+          <img id="vegetta-frame2" src="../A.Pegatinas/Dragonball/Vegetta/Vegeta-3.png" crossorigin="anonymous" />
+          <img id="vegetta-frame3" src="../A.Pegatinas/Dragonball/Vegetta/Vegeta-4.png" crossorigin="anonymous" />
+          <img id="vegetta-frame4" src="../A.Pegatinas/Dragonball/Vegetta/Vegeta-5.png" crossorigin="anonymous" />
+          <img id="vegetta-frame5" src="../A.Pegatinas/Dragonball/Vegetta/Vegeta-6.png" crossorigin="anonymous" />
+
+          <img id="piccolo-frame0" src="../A.Pegatinas/Dragonball/Piccolo/Picolo-1.png" crossorigin="anonymous" />
+          <img id="piccolo-frame1" src="../A.Pegatinas/Dragonball/Piccolo/Picolo-2.png" crossorigin="anonymous" />
+          <img id="piccolo-frame2" src="../A.Pegatinas/Dragonball/Piccolo/Picolo-3.png" crossorigin="anonymous" />
+          <img id="piccolo-frame3" src="../A.Pegatinas/Dragonball/Piccolo/Picolo-4.png" crossorigin="anonymous" />
+          <img id="piccolo-frame4" src="../A.Pegatinas/Dragonball/Piccolo/Picolo-5.png" crossorigin="anonymous" />
+
+          <img id="freezer-frame0" src="../A.Pegatinas/Dragonball/Freezer/Freezer-1.png" crossorigin="anonymous" />
+          <img id="freezer-frame1" src="../A.Pegatinas/Dragonball/Freezer/Freezer-2.png" crossorigin="anonymous" />
+          <img id="freezer-frame2" src="../A.Pegatinas/Dragonball/Freezer/Freezer-3.png" crossorigin="anonymous" />
+          <img id="freezer-frame3" src="../A.Pegatinas/Dragonball/Freezer/Freezer-4.png" crossorigin="anonymous" />
+          <img id="freezer-frame4" src="../A.Pegatinas/Dragonball/Freezer/Freezer-5.png" crossorigin="anonymous" />
+          <img id="freezer-frame5" src="../A.Pegatinas/Dragonball/Freezer/Freezer-6.png" crossorigin="anonymous" />
+          <img id="freezer-frame6" src="../A.Pegatinas/Dragonball/Freezer/Freezer-7.png" crossorigin="anonymous" />
+          <img id="freezer-frame7" src="../A.Pegatinas/Dragonball/Freezer/Freezer-8.png" crossorigin="anonymous" />
+
+          <img id="bulma-frame0" src="../A.Pegatinas/Dragonball/Bulma/Bulma-1.png" crossorigin="anonymous" />
+          <img id="bulma-frame1" src="../A.Pegatinas/Dragonball/Bulma/Bulma-2.png" crossorigin="anonymous" />
+          <img id="bulma-frame2" src="../A.Pegatinas/Dragonball/Bulma/Bulma-3.png" crossorigin="anonymous" />
+          <img id="bulma-frame3" src="../A.Pegatinas/Dragonball/Bulma/Bulma-4.png" crossorigin="anonymous" />
+          <img id="bulma-frame4" src="../A.Pegatinas/Dragonball/Bulma/Bulma-5.png" crossorigin="anonymous" />
+          <img id="bulma-frame5" src="../A.Pegatinas/Dragonball/Bulma/Bulma-6.png" crossorigin="anonymous" />
+          <img id="bulma-frame6" src="../A.Pegatinas/Dragonball/Bulma/Bulma-7.png" crossorigin="anonymous" />
+          <img id="bulma-frame7" src="../A.Pegatinas/Dragonball/Bulma/Bulma-8.png" crossorigin="anonymous" />
+          <img id="bulma-frame8" src="../A.Pegatinas/Dragonball/Bulma/Bulma-9.png" crossorigin="anonymous" />
+          <img id="bulma-frame9" src="../A.Pegatinas/Dragonball/Bulma/Bulma-10.png" crossorigin="anonymous" />
+
+        </a-assets>
+
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+
+        <!-- Una a-entity para cada uno, solo cambia la ID -->
+        <a-entity mindar-image-target="targetIndex: 0" id="target-goku">
+          <a-image
+            id="anim-image-goku"
+            src="#goku-frame0"
+            position="0 0.1 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: goku; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 1" id="target-vegetta">
+          <a-image
+            id="anim-image-vegetta"
+            src="#vegetta-frame0"
+            position="0 0 0"
+            width="1.2"
+            height="1.2"
+            frame-animation="prefix: vegetta; count: 6"
+            animation__enlarge="property: scale; to: 1.3 1.3 1.3; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 2" id="target-piccolo">
+          <a-image
+            id="anim-image-piccolo"
+            src="#piccolo-frame0"
+            position="0.3 0.1 0"
+            width="1.2"
+            height="1.2"
+            frame-animation="prefix: piccolo; count: 5"
+            animation__enlarge="property: scale; to: 1.3 1.3 1.3; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 4" id="target-freezer">
+          <a-image
+            id="anim-image-freezer"
+            src="#freezer-frame0"
+            position="-0.1 0 0"
+            width="1.2"
+            height="1.2"
+            frame-animation="prefix: freezer; count: 8"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>    
+
+        <a-entity mindar-image-target="targetIndex: 3" id="target-bulma">
+          <a-image
+            id="anim-image-bulma"
+            src="#bulma-frame0"
+            position="0.05 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: bulma; count: 10"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>   
+
+        <!-- Script para animar los frames -->
+        <script>
+          AFRAME.registerComponent('frame-animation', {
+            schema: {
+              prefix: {type: 'string'},
+              count: {type: 'int'}
+            },
+            init: function () {
+              this.frames = [];
+              for (let i = 0; i < this.data.count; i++) {
+                this.frames.push(`#${this.data.prefix}-frame${i}`);
+              }
+              this.current = 0;
+              this.interval = null;
+
+              // Start animation only when parent target is visible
+              this.el.sceneEl.addEventListener("targetFound", (e) => {
+                if (this.el.parentElement === e.target && !this.interval) {
+                  this.start();
+                }
+              });
+
+              this.el.sceneEl.addEventListener("targetLost", (e) => {
+                if (this.el.parentElement === e.target) {
+                  this.stop();
+                }
+              });
+            },
+            start: function () {
+              this.interval = setInterval(() => {
+                this.el.setAttribute("src", this.frames[this.current]);
+                this.current = (this.current + 1) % this.frames.length;
+              }, 150);
+            },
+            stop: function () {
+              if (this.interval) {
+                clearInterval(this.interval);
+                this.interval = null;
+                this.current = 0; // optional: reset to first frame
+              }
+            },
+            remove: function () {
+              this.stop();
+            }
+          });
+        </script>
+        <script>
+
+          document.addEventListener("DOMContentLoaded", () => {
+            const targets = [
+              { target: "#target-goku", image: "#anim-image-goku" },
+              { target: "#target-vegetta", image: "#anim-image-vegetta" },
+              { target: "#target-piccolo", image: "#anim-image-piccolo" },
+              { target: "#target-freezer", image: "#anim-image-freezer" },
+              { target: "#target-bulma", image: "#anim-image-bulma" }
+            ];
+
+            targets.forEach(({ target, image }) => {
+              const t = document.querySelector(target);
+              const img = document.querySelector(image);
+              if (!t || !img) return;
+
+              t.addEventListener('targetFound', () => {
+                img.emit('enlarge');
+              });
+
+              t.addEventListener('targetLost', () => {
+                img.emit('shrink');
+              });
+            });
+          });
+        </script>
+      </a-scene>
+    </div>
+  </body>
+</html>

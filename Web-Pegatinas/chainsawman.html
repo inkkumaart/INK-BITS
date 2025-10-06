@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MindAR Secuencia PNG Animada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- MindAR y A-Frame -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+
+    <style>
+      body { margin: 0; overflow: hidden; }
+      #ar-container { width: 100vh; height: 100vh; }
+    </style>
+  </head>
+
+  <body>
+    <div id="ar-container">
+      <a-scene 
+        mindar-image="imageTargetSrc: ../A.Pegatinas/Chainsawman/targets.mind; maxTrack: 5; filterMinCF: 0.001; filterBeta: 10; warmupTolerance: 5; missTolerance: 5;" 
+        color-space="sRGB"
+        embedded
+        renderer="colorManagement: true, physicallyCorrectLights"
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: true"
+      >
+        <a-assets>
+          <!-- Cargamos los frames de la animación -->
+          <img id="aki-frame0" src="../A.Pegatinas/Chainsawman/Aki/Aki-1.png" crossorigin="anonymous" />
+          <img id="aki-frame1" src="../A.Pegatinas/Chainsawman/Aki/Aki-2.png" crossorigin="anonymous" />
+          <img id="aki-frame2" src="../A.Pegatinas/Chainsawman/Aki/Aki-3.png" crossorigin="anonymous" />
+          <img id="aki-frame3" src="../A.Pegatinas/Chainsawman/Aki/Aki-4.png" crossorigin="anonymous" />
+          <img id="aki-frame4" src="../A.Pegatinas/Chainsawman/Aki/Aki-5.png" crossorigin="anonymous" />
+
+          <img id="denji-frame0" src="../A.Pegatinas/Chainsawman/Denji/Denji-1.png" crossorigin="anonymous" />
+          <img id="denji-frame1" src="../A.Pegatinas/Chainsawman/Denji/Denji-2.png" crossorigin="anonymous" />
+          <img id="denji-frame2" src="../A.Pegatinas/Chainsawman/Denji/Denji-3.png" crossorigin="anonymous" />
+          <img id="denji-frame3" src="../A.Pegatinas/Chainsawman/Denji/Denji-4.png" crossorigin="anonymous" />
+          <img id="denji-frame4" src="../A.Pegatinas/Chainsawman/Denji/Denji-5.png" crossorigin="anonymous" />
+          <img id="denji-frame5" src="../A.Pegatinas/Chainsawman/Denji/Denji-6.png" crossorigin="anonymous" />
+          <img id="denji-frame6" src="../A.Pegatinas/Chainsawman/Denji/Denji-7.png" crossorigin="anonymous" />
+
+          <img id="makima-frame0" src="../A.Pegatinas/Chainsawman/Makima/Makima-1.png" crossorigin="anonymous" />
+          <img id="makima-frame1" src="../A.Pegatinas/Chainsawman/Makima/Makima-2.png" crossorigin="anonymous" />
+          <img id="makima-frame2" src="../A.Pegatinas/Chainsawman/Makima/Makima-3.png" crossorigin="anonymous" />
+          <img id="makima-frame3" src="../A.Pegatinas/Chainsawman/Makima/Makima-4.png" crossorigin="anonymous" />
+          <img id="makima-frame4" src="../A.Pegatinas/Chainsawman/Makima/Makima-5.png" crossorigin="anonymous" />
+          <img id="makima-frame5" src="../A.Pegatinas/Chainsawman/Makima/Makima-6.png" crossorigin="anonymous" />
+
+          <img id="power-frame0" src="../A.Pegatinas/Chainsawman/Power/Power-1.png" crossorigin="anonymous" />
+          <img id="power-frame1" src="../A.Pegatinas/Chainsawman/Power/Power-2.png" crossorigin="anonymous" />
+          <img id="power-frame2" src="../A.Pegatinas/Chainsawman/Power/Power-3.png" crossorigin="anonymous" />
+          <img id="power-frame3" src="../A.Pegatinas/Chainsawman/Power/Power-4.png" crossorigin="anonymous" />
+          <img id="power-frame4" src="../A.Pegatinas/Chainsawman/Power/Power-5.png" crossorigin="anonymous" />
+          <img id="power-frame5" src="../A.Pegatinas/Chainsawman/Power/Power-6.png" crossorigin="anonymous" />
+          <img id="power-frame6" src="../A.Pegatinas/Chainsawman/Power/Power-7.png" crossorigin="anonymous" />
+          <img id="power-frame7" src="../A.Pegatinas/Chainsawman/Power/Power-8.png" crossorigin="anonymous" />
+
+          <img id="pochita-frame0" src="../A.Pegatinas/Chainsawman/Pochita/Pochita-1.png" crossorigin="anonymous" />
+          <img id="pochita-frame1" src="../A.Pegatinas/Chainsawman/Pochita/Pochita-2.png" crossorigin="anonymous" />
+          <img id="pochita-frame2" src="../A.Pegatinas/Chainsawman/Pochita/Pochita-3.png" crossorigin="anonymous" />
+          <img id="pochita-frame3" src="../A.Pegatinas/Chainsawman/Pochita/Pochita-4.png" crossorigin="anonymous" />
+          <img id="pochita-frame4" src="../A.Pegatinas/Chainsawman/Pochita/Pochita-5.png" crossorigin="anonymous" />
+          <img id="pochita-frame5" src="../A.Pegatinas/Chainsawman/Pochita/Pochita-6.png" crossorigin="anonymous" />
+
+        </a-assets>
+
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+
+        <!-- Una a-entity para cada uno, solo cambia la ID -->
+        <a-entity mindar-image-target="targetIndex: 1" id="target-aki">
+          <a-image
+            id="anim-image-aki"
+            src="#aki-frame0"
+            position="0.1 0.15 0"
+            width="1.3"
+            height="1.3"
+            frame-animation="prefix: aki; count: 5"
+            animation__enlarge="property: scale; to: 1.4 1.4 1.4; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 0" id="target-denji">
+          <a-image
+            id="anim-image-denji"
+            src="#denji-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: denji; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 3" id="target-makima">
+          <a-image
+            id="anim-image-makima"
+            src="#makima-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: makima; count: 6"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 2" id="target-power">
+          <a-image
+            id="anim-image-power"
+            src="#power-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: power; count: 8"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>    
+
+        <a-entity mindar-image-target="targetIndex: 4" id="target-pochita">
+          <a-image
+            id="anim-image-pochita"
+            src="#pochita-frame0"
+            position="0 0.3 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: pochita; count: 6"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>   
+
+        <!-- Script para animar los frames -->
+        <script>
+          AFRAME.registerComponent('frame-animation', {
+            schema: {
+              prefix: {type: 'string'},
+              count: {type: 'int'}
+            },
+            init: function () {
+              this.frames = [];
+              for (let i = 0; i < this.data.count; i++) {
+                this.frames.push(`#${this.data.prefix}-frame${i}`);
+              }
+              this.current = 0;
+              this.interval = null;
+
+              // Start animation only when parent target is visible
+              this.el.sceneEl.addEventListener("targetFound", (e) => {
+                if (this.el.parentElement === e.target && !this.interval) {
+                  this.start();
+                }
+              });
+
+              this.el.sceneEl.addEventListener("targetLost", (e) => {
+                if (this.el.parentElement === e.target) {
+                  this.stop();
+                }
+              });
+            },
+            start: function () {
+              this.interval = setInterval(() => {
+                this.el.setAttribute("src", this.frames[this.current]);
+                this.current = (this.current + 1) % this.frames.length;
+              }, 150);
+            },
+            stop: function () {
+              if (this.interval) {
+                clearInterval(this.interval);
+                this.interval = null;
+                this.current = 0; // optional: reset to first frame
+              }
+            },
+            remove: function () {
+              this.stop();
+            }
+          });
+        </script>
+        <script>
+
+          document.addEventListener("DOMContentLoaded", () => {
+            const targets = [
+              { target: "#target-aki", image: "#anim-image-aki" },
+              { target: "#target-denji", image: "#anim-image-denji" },
+              { target: "#target-makima", image: "#anim-image-makima" },
+              { target: "#target-power", image: "#anim-image-power" },
+              { target: "#target-pochita", image: "#anim-image-pochita" }
+            ];
+
+            targets.forEach(({ target, image }) => {
+              const t = document.querySelector(target);
+              const img = document.querySelector(image);
+              if (!t || !img) return;
+
+              t.addEventListener('targetFound', () => {
+                img.emit('enlarge');
+              });
+
+              t.addEventListener('targetLost', () => {
+                img.emit('shrink');
+              });
+            });
+          });
+        </script>
+      </a-scene>
+    </div>
+  </body>
+</html>
