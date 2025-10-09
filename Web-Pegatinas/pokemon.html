@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MindAR Secuencia PNG Animada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- MindAR y A-Frame -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+
+    <style>
+      body { margin: 0; overflow: hidden; }
+      #ar-container { width: 100vh; height: 100vh; }
+    </style>
+  </head>
+
+  <body>
+    <div id="ar-container">
+      <a-scene 
+        mindar-image="imageTargetSrc: ../A.Pegatinas/Pokemon/targets.mind; maxTrack: 5; filterMinCF: 0.001; filterBeta: 10; warmupTolerance: 5; missTolerance: 5;" 
+        color-space="sRGB"
+        embedded
+        renderer="colorManagement: true, physicallyCorrectLights"
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: true"
+      >
+        <a-assets>
+          <!-- Cargamos los frames de la animación -->
+          <img id="fuecoco-frame0" src="../A.Pegatinas/Pokemon/Fuecoco/Fuecoco-1.png" crossorigin="anonymous" />
+          <img id="fuecoco-frame1" src="../A.Pegatinas/Pokemon/Fuecoco/Fuecoco-2.png" crossorigin="anonymous" />
+          <img id="fuecoco-frame2" src="../A.Pegatinas/Pokemon/Fuecoco/Fuecoco-3.png" crossorigin="anonymous" />
+          <img id="fuecoco-frame3" src="../A.Pegatinas/Pokemon/Fuecoco/Fuecoco-4.png" crossorigin="anonymous" />
+          <img id="fuecoco-frame4" src="../A.Pegatinas/Pokemon/Fuecoco/Fuecoco-5.png" crossorigin="anonymous" />
+          <img id="fuecoco-frame5" src="../A.Pegatinas/Pokemon/Fuecoco/Fuecoco-6.png" crossorigin="anonymous" />
+          <img id="fuecoco-frame6" src="../A.Pegatinas/Pokemon/Fuecoco/Fuecoco-7.png" crossorigin="anonymous" />
+          <img id="fuecoco-frame7" src="../A.Pegatinas/Pokemon/Fuecoco/Fuecoco-8.png" crossorigin="anonymous" />
+
+          <img id="lechonk-frame0" src="../A.Pegatinas/Pokemon/Lechonk/Lechonk-1.png" crossorigin="anonymous" />
+          <img id="lechonk-frame1" src="../A.Pegatinas/Pokemon/Lechonk/Lechonk-2.png" crossorigin="anonymous" />
+          <img id="lechonk-frame2" src="../A.Pegatinas/Pokemon/Lechonk/Lechonk-3.png" crossorigin="anonymous" />
+          <img id="lechonk-frame3" src="../A.Pegatinas/Pokemon/Lechonk/Lechonk-4.png" crossorigin="anonymous" />
+          <img id="lechonk-frame4" src="../A.Pegatinas/Pokemon/Lechonk/Lechonk-5.png" crossorigin="anonymous" />
+
+          <img id="quaxly-frame0" src="../A.Pegatinas/Pokemon/Quaxly/Quaxly-1.png" crossorigin="anonymous" />
+          <img id="quaxly-frame1" src="../A.Pegatinas/Pokemon/Quaxly/Quaxly-2.png" crossorigin="anonymous" />
+          <img id="quaxly-frame2" src="../A.Pegatinas/Pokemon/Quaxly/Quaxly-3.png" crossorigin="anonymous" />
+          <img id="quaxly-frame3" src="../A.Pegatinas/Pokemon/Quaxly/Quaxly-4.png" crossorigin="anonymous" />
+          <img id="quaxly-frame4" src="../A.Pegatinas/Pokemon/Quaxly/Quaxly-5.png" crossorigin="anonymous" />
+          <img id="quaxly-frame5" src="../A.Pegatinas/Pokemon/Quaxly/Quaxly-6.png" crossorigin="anonymous" />
+
+          <img id="smoliv-frame0" src="../A.Pegatinas/Pokemon/Smoliv/Smoliv-1.png" crossorigin="anonymous" />
+          <img id="smoliv-frame1" src="../A.Pegatinas/Pokemon/Smoliv/Smoliv-2.png" crossorigin="anonymous" />
+          <img id="smoliv-frame2" src="../A.Pegatinas/Pokemon/Smoliv/Smoliv-3.png" crossorigin="anonymous" />
+          <img id="smoliv-frame3" src="../A.Pegatinas/Pokemon/Smoliv/Smoliv-4.png" crossorigin="anonymous" />
+          <img id="smoliv-frame4" src="../A.Pegatinas/Pokemon/Smoliv/Smoliv-5.png" crossorigin="anonymous" />
+          <img id="smoliv-frame5" src="../A.Pegatinas/Pokemon/Smoliv/Smoliv-6.png" crossorigin="anonymous" />
+          <img id="smoliv-frame6" src="../A.Pegatinas/Pokemon/Smoliv/Smoliv-7.png" crossorigin="anonymous" />
+
+          <img id="spirgatito-frame0" src="../A.Pegatinas/Pokemon/Sprigatito/Sprigatito-1.png" crossorigin="anonymous" />
+          <img id="spirgatito-frame1" src="../A.Pegatinas/Pokemon/Sprigatito/Sprigatito-2.png" crossorigin="anonymous" />
+          <img id="spirgatito-frame2" src="../A.Pegatinas/Pokemon/Sprigatito/Sprigatito-3.png" crossorigin="anonymous" />
+          <img id="spirgatito-frame3" src="../A.Pegatinas/Pokemon/Sprigatito/Sprigatito-4.png" crossorigin="anonymous" />
+          <img id="spirgatito-frame4" src="../A.Pegatinas/Pokemon/Sprigatito/Sprigatito-5.png" crossorigin="anonymous" />
+          <img id="spirgatito-frame5" src="../A.Pegatinas/Pokemon/Sprigatito/Sprigatito-6.png" crossorigin="anonymous" />
+        </a-assets>
+
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+
+        <!-- Una a-entity para cada uno, solo cambia la ID -->
+        <a-entity mindar-image-target="targetIndex: 0" id="target-fuecoco">
+          <a-image
+            id="anim-image-fuecoco"
+            src="#fuecoco-frame0"
+            position="0 0.15 0"
+            width="1.2"
+            height="1.25"
+            frame-animation="prefix: fuecoco; count: 8"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 1" id="target-lechonk">
+          <a-image
+            id="anim-image-lechonk"
+            src="#lechonk-frame0"
+            position="0 0.1 0"
+            width="1"
+            height="1.1"
+            frame-animation="prefix: lechonk; count: 5"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 2" id="target-quaxly">
+          <a-image
+            id="anim-image-quaxly"
+            src="#quaxly-frame0"
+            position="0.2 0 0"
+            width="1.2"
+            height="1.2"
+            frame-animation="prefix: quaxly; count: 6"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 3" id="target-smoliv">
+          <a-image
+            id="anim-image-smoliv"
+            src="#smoliv-frame0"
+            position="0 0 0"
+            width="1.1"
+            height="1.1"
+            frame-animation="prefix: smoliv; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>    
+
+        <a-entity mindar-image-target="targetIndex: 4" id="target-spirgatito">
+          <a-image
+            id="anim-image-spirgatito"
+            src="#spirgatito-frame0"
+            position="0 0.1 0"
+            width="1"
+            height="1.25"
+            frame-animation="prefix: spirgatito; count: 6"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>   
+
+        <!-- Script para animar los frames -->
+        <script>
+          AFRAME.registerComponent('frame-animation', {
+            schema: {
+              prefix: {type: 'string'},
+              count: {type: 'int'}
+            },
+            init: function () {
+              this.frames = [];
+              for (let i = 0; i < this.data.count; i++) {
+                this.frames.push(`#${this.data.prefix}-frame${i}`);
+              }
+              this.current = 0;
+              this.interval = null;
+
+              // Start animation only when parent target is visible
+              this.el.sceneEl.addEventListener("targetFound", (e) => {
+                if (this.el.parentElement === e.target && !this.interval) {
+                  this.start();
+                }
+              });
+
+              this.el.sceneEl.addEventListener("targetLost", (e) => {
+                if (this.el.parentElement === e.target) {
+                  this.stop();
+                }
+              });
+            },
+            start: function () {
+              this.interval = setInterval(() => {
+                this.el.setAttribute("src", this.frames[this.current]);
+                this.current = (this.current + 1) % this.frames.length;
+              }, 150);
+            },
+            stop: function () {
+              if (this.interval) {
+                clearInterval(this.interval);
+                this.interval = null;
+                this.current = 0; // optional: reset to first frame
+              }
+            },
+            remove: function () {
+              this.stop();
+            }
+          });
+        </script>
+        <script>
+
+          document.addEventListener("DOMContentLoaded", () => {
+            const targets = [
+              { target: "#target-fuecoco", image: "#anim-image-fuecoco" },
+              { target: "#target-lechonk", image: "#anim-image-lechonk" },
+              { target: "#target-quaxly", image: "#anim-image-quaxly" },
+              { target: "#target-smoliv", image: "#anim-image-smoliv" },
+              { target: "#target-spirgatito", image: "#anim-image-spirgatito" }
+            ];
+
+            targets.forEach(({ target, image }) => {
+              const t = document.querySelector(target);
+              const img = document.querySelector(image);
+              if (!t || !img) return;
+
+              t.addEventListener('targetFound', () => {
+                img.emit('enlarge');
+              });
+
+              t.addEventListener('targetLost', () => {
+                img.emit('shrink');
+              });
+            });
+          });
+        </script>
+      </a-scene>
+    </div>
+  </body>
+</html>

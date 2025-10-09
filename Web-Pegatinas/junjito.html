@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MindAR Secuencia PNG Animada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- MindAR y A-Frame -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+
+    <style>
+      body { margin: 0; overflow: hidden; }
+      #ar-container { width: 100vh; height: 100vh; }
+    </style>
+  </head>
+
+  <body>
+    <div id="ar-container">
+      <a-scene 
+        mindar-image="imageTargetSrc: ../A.Pegatinas/Junjito/targets.mind; maxTrack: 5; filterMinCF: 0.001; filterBeta: 10; warmupTolerance: 5; missTolerance: 5;" 
+        color-space="sRGB"
+        embedded
+        renderer="colorManagement: true, physicallyCorrectLights"
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: true"
+      >
+        <a-assets>
+          <!-- Cargamos los frames de la animación -->
+          <img id="fantasma-frame0" src="../A.Pegatinas/Junjito/Fantasma/Fantasma-1.png" crossorigin="anonymous" />
+          <img id="fantasma-frame1" src="../A.Pegatinas/Junjito/Fantasma/Fantasma-2.png" crossorigin="anonymous" />
+          <img id="fantasma-frame2" src="../A.Pegatinas/Junjito/Fantasma/Fantasma-3.png" crossorigin="anonymous" />
+          <img id="fantasma-frame3" src="../A.Pegatinas/Junjito/Fantasma/Fantasma-4.png" crossorigin="anonymous" />
+          <img id="fantasma-frame4" src="../A.Pegatinas/Junjito/Fantasma/Fantasma-5.png" crossorigin="anonymous" />
+          <img id="fantasma-frame5" src="../A.Pegatinas/Junjito/Fantasma/Fantasma-6.png" crossorigin="anonymous" />
+
+          <img id="clavos-frame0" src="../A.Pegatinas/Junjito/Clavos/Clavos-1.png" crossorigin="anonymous" />
+          <img id="clavos-frame1" src="../A.Pegatinas/Junjito/Clavos/Clavos-2.png" crossorigin="anonymous" />
+          <img id="clavos-frame2" src="../A.Pegatinas/Junjito/Clavos/Clavos-3.png" crossorigin="anonymous" />
+          <img id="clavos-frame3" src="../A.Pegatinas/Junjito/Clavos/Clavos-4.png" crossorigin="anonymous" />
+          <img id="clavos-frame4" src="../A.Pegatinas/Junjito/Clavos/Clavos-5.png" crossorigin="anonymous" />
+
+          <img id="slug-frame0" src="../A.Pegatinas/Junjito/Slug_Girl/Slug_girl-1.png" crossorigin="anonymous" />
+          <img id="slug-frame1" src="../A.Pegatinas/Junjito/Slug_Girl/Slug_girl-2.png" crossorigin="anonymous" />
+          <img id="slug-frame2" src="../A.Pegatinas/Junjito/Slug_Girl/Slug_girl-3.png" crossorigin="anonymous" />
+          <img id="slug-frame3" src="../A.Pegatinas/Junjito/Slug_Girl/Slug_girl-4.png" crossorigin="anonymous" />
+          <img id="slug-frame4" src="../A.Pegatinas/Junjito/Slug_Girl/Slug_girl-5.png" crossorigin="anonymous" />
+          <img id="slug-frame5" src="../A.Pegatinas/Junjito/Slug_Girl/Slug_girl-6.png" crossorigin="anonymous" />
+          <img id="slug-frame6" src="../A.Pegatinas/Junjito/Slug_Girl/Slug_girl-7.png" crossorigin="anonymous" />
+
+
+          <img id="tomie-frame0" src="../A.Pegatinas/Junjito/Tomie/Tomie-1.png" crossorigin="anonymous" />
+          <img id="tomie-frame1" src="../A.Pegatinas/Junjito/Tomie/Tomie-2.png" crossorigin="anonymous" />
+          <img id="tomie-frame2" src="../A.Pegatinas/Junjito/Tomie/Tomie-3.png" crossorigin="anonymous" />
+          <img id="tomie-frame3" src="../A.Pegatinas/Junjito/Tomie/Tomie-4.png" crossorigin="anonymous" />
+          <img id="tomie-frame4" src="../A.Pegatinas/Junjito/Tomie/Tomie-5.png" crossorigin="anonymous" />
+          <img id="tomie-frame5" src="../A.Pegatinas/Junjito/Tomie/Tomie-6.png" crossorigin="anonymous" />
+
+          <img id="uzumaki-frame0" src="../A.Pegatinas/Junjito/Uzumaki/Uzumaki-1.png" crossorigin="anonymous" />
+          <img id="uzumaki-frame1" src="../A.Pegatinas/Junjito/Uzumaki/Uzumaki-2.png" crossorigin="anonymous" />
+          <img id="uzumaki-frame2" src="../A.Pegatinas/Junjito/Uzumaki/Uzumaki-3.png" crossorigin="anonymous" />
+          <img id="uzumaki-frame3" src="../A.Pegatinas/Junjito/Uzumaki/Uzumaki-4.png" crossorigin="anonymous" />
+          <img id="uzumaki-frame4" src="../A.Pegatinas/Junjito/Uzumaki/Uzumaki-5.png" crossorigin="anonymous" />
+          <img id="uzumaki-frame5" src="../A.Pegatinas/Junjito/Uzumaki/Uzumaki-6.png" crossorigin="anonymous" />
+          <img id="uzumaki-frame6" src="../A.Pegatinas/Junjito/Uzumaki/Uzumaki-7.png" crossorigin="anonymous" />
+        </a-assets>
+
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+
+        <!-- Una a-entity para cada uno, solo cambia la ID -->
+        <a-entity mindar-image-target="targetIndex: 0" id="target-fantasma">
+          <a-image
+            id="anim-image-fantasma"
+            src="#fantasma-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: fantasma; count: 6"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 1" id="target-clavos">
+          <a-image
+            id="anim-image-clavos"
+            src="#clavos-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: clavos; count: 5"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 2" id="target-slug">
+          <a-image
+            id="anim-image-slug"
+            src="#slug-frame0"
+            position="0 0.1 0"
+            width="1"
+            height="1.2"
+            frame-animation="prefix: slug; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.3 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 3" id="target-tomie">
+          <a-image
+            id="anim-image-tomie"
+            src="#tomie-frame0"
+            position="0 0.1 0"
+            width="1"
+            height="1.2"
+            frame-animation="prefix: tomie; count: 6"
+            animation__enlarge="property: scale; to: 1 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>    
+
+        <a-entity mindar-image-target="targetIndex: 4" id="target-uzumaki">
+          <a-image
+            id="anim-image-uzumaki"
+            src="#uzumaki-frame0"
+            position="0 0.1 0"
+            width="1"
+            height="1.2"
+            frame-animation="prefix: uzumaki; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.3 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>   
+
+        <!-- Script para animar los frames -->
+        <script>
+          AFRAME.registerComponent('frame-animation', {
+            schema: {
+              prefix: {type: 'string'},
+              count: {type: 'int'}
+            },
+            init: function () {
+              this.frames = [];
+              for (let i = 0; i < this.data.count; i++) {
+                this.frames.push(`#${this.data.prefix}-frame${i}`);
+              }
+              this.current = 0;
+              this.interval = null;
+
+              // Start animation only when parent target is visible
+              this.el.sceneEl.addEventListener("targetFound", (e) => {
+                if (this.el.parentElement === e.target && !this.interval) {
+                  this.start();
+                }
+              });
+
+              this.el.sceneEl.addEventListener("targetLost", (e) => {
+                if (this.el.parentElement === e.target) {
+                  this.stop();
+                }
+              });
+            },
+            start: function () {
+              this.interval = setInterval(() => {
+                this.el.setAttribute("src", this.frames[this.current]);
+                this.current = (this.current + 1) % this.frames.length;
+              }, 150);
+            },
+            stop: function () {
+              if (this.interval) {
+                clearInterval(this.interval);
+                this.interval = null;
+                this.current = 0; // optional: reset to first frame
+              }
+            },
+            remove: function () {
+              this.stop();
+            }
+          });
+        </script>
+        <script>
+
+          document.addEventListener("DOMContentLoaded", () => {
+            const targets = [
+              { target: "#target-fantasma", image: "#anim-image-fantasma" },
+              { target: "#target-clavos", image: "#anim-image-clavos" },
+              { target: "#target-slug", image: "#anim-image-slug" },
+              { target: "#target-tomie", image: "#anim-image-tomie" },
+              { target: "#target-uzumaki", image: "#anim-image-uzumaki" }
+            ];
+
+            targets.forEach(({ target, image }) => {
+              const t = document.querySelector(target);
+              const img = document.querySelector(image);
+              if (!t || !img) return;
+
+              t.addEventListener('targetFound', () => {
+                img.emit('enlarge');
+              });
+
+              t.addEventListener('targetLost', () => {
+                img.emit('shrink');
+              });
+            });
+          });
+        </script>
+      </a-scene>
+    </div>
+  </body>
+</html>

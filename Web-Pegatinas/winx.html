@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MindAR Secuencia PNG Animada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- MindAR y A-Frame -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+
+    <style>
+      body { margin: 0; overflow: hidden; }
+      #ar-container { width: 100vh; height: 100vh; }
+    </style>
+  </head>
+
+  <body>
+    <div id="ar-container">
+      <a-scene 
+        mindar-image="imageTargetSrc: ../A.Pegatinas/Winx/targets.mind; maxTrack: 6; filterMinCF: 0.001; filterBeta: 10; warmupTolerance: 5; missTolerance: 5;" 
+        color-space="sRGB"
+        embedded
+        renderer="colorManagement: true, physicallyCorrectLights"
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: true"
+      >
+        <a-assets>
+          <!-- Cargamos los frames de la animación -->
+          <img id="bloom-frame0" src="../A.Pegatinas/Winx/Bloom/Bloom-1.png" crossorigin="anonymous" />
+          <img id="bloom-frame1" src="../A.Pegatinas/Winx/Bloom/Bloom-2.png" crossorigin="anonymous" />
+          <img id="bloom-frame2" src="../A.Pegatinas/Winx/Bloom/Bloom-3.png" crossorigin="anonymous" />
+          <img id="bloom-frame3" src="../A.Pegatinas/Winx/Bloom/Bloom-4.png" crossorigin="anonymous" />
+          <img id="bloom-frame4" src="../A.Pegatinas/Winx/Bloom/Bloom-5.png" crossorigin="anonymous" />
+
+          <img id="flora-frame0" src="../A.Pegatinas/Winx/Flora/Flora-1.png" crossorigin="anonymous" />
+          <img id="flora-frame1" src="../A.Pegatinas/Winx/Flora/Flora-2.png" crossorigin="anonymous" />
+          <img id="flora-frame2" src="../A.Pegatinas/Winx/Flora/Flora-3.png" crossorigin="anonymous" />
+          <img id="flora-frame3" src="../A.Pegatinas/Winx/Flora/Flora-4.png" crossorigin="anonymous" />
+          <img id="flora-frame4" src="../A.Pegatinas/Winx/Flora/Flora-5.png" crossorigin="anonymous" />
+
+          <img id="layla-frame0" src="../A.Pegatinas/Winx/Layla/Layla-1.png" crossorigin="anonymous" />
+          <img id="layla-frame1" src="../A.Pegatinas/Winx/Layla/Layla-2.png" crossorigin="anonymous" />
+          <img id="layla-frame2" src="../A.Pegatinas/Winx/Layla/Layla-3.png" crossorigin="anonymous" />
+          <img id="layla-frame3" src="../A.Pegatinas/Winx/Layla/Layla-4.png" crossorigin="anonymous" />
+          <img id="layla-frame4" src="../A.Pegatinas/Winx/Layla/Layla-6.png" crossorigin="anonymous" />
+
+          <img id="musa-frame0" src="../A.Pegatinas/Winx/Musa/Musa-1.png" crossorigin="anonymous" />
+          <img id="musa-frame1" src="../A.Pegatinas/Winx/Musa/Musa-2.png" crossorigin="anonymous" />
+          <img id="musa-frame2" src="../A.Pegatinas/Winx/Musa/Musa-3.png" crossorigin="anonymous" />
+          <img id="musa-frame3" src="../A.Pegatinas/Winx/Musa/Musa-4.png" crossorigin="anonymous" />
+          <img id="musa-frame4" src="../A.Pegatinas/Winx/Musa/Musa-5.png" crossorigin="anonymous" />
+
+          <img id="stella-frame0" src="../A.Pegatinas/Winx/Estela/Estela-1.png" crossorigin="anonymous" />
+          <img id="stella-frame1" src="../A.Pegatinas/Winx/Estela/Estela-2.png" crossorigin="anonymous" />
+          <img id="stella-frame2" src="../A.Pegatinas/Winx/Estela/Estela-3.png" crossorigin="anonymous" />
+          <img id="stella-frame3" src="../A.Pegatinas/Winx/Estela/Estela-4.png" crossorigin="anonymous" />
+          <img id="stella-frame4" src="../A.Pegatinas/Winx/Estela/Estela-5.png" crossorigin="anonymous" />
+
+          <img id="techna-frame0" src="../A.Pegatinas/Winx/Techna/Tecna-1.png" crossorigin="anonymous" />
+          <img id="techna-frame1" src="../A.Pegatinas/Winx/Techna/Tecna-2.png" crossorigin="anonymous" />
+          <img id="techna-frame2" src="../A.Pegatinas/Winx/Techna/Tecna-3.png" crossorigin="anonymous" />
+          <img id="techna-frame3" src="../A.Pegatinas/Winx/Techna/Tecna-4.png" crossorigin="anonymous" />
+          <img id="techna-frame4" src="../A.Pegatinas/Winx/Techna/Tecna-5.png" crossorigin="anonymous" />
+        </a-assets>
+
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+
+        <!-- Una a-entity para cada uno, solo cambia la ID -->
+        <a-entity mindar-image-target="targetIndex: 0" id="target-bloom">
+          <a-image
+            id="anim-image-bloom"
+            src="#bloom-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: bloom; count: 5"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 1" id="target-flora">
+          <a-image
+            id="anim-image-flora"
+            src="#flora-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: flora; count: 5"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 2" id="target-layla">
+          <a-image
+            id="anim-image-layla"
+            src="#layla-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: layla; count: 5"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 3" id="target-musa">
+          <a-image
+            id="anim-image-musa"
+            src="#musa-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: musa; count: 5"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>    
+
+        <a-entity mindar-image-target="targetIndex: 4" id="target-stella">
+          <a-image
+            id="anim-image-stella"
+            src="#stella-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: stella; count: 5"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 5" id="target-techna">
+          <a-image
+            id="anim-image-techna"
+            src="#techna-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: techna; count: 5"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>   
+
+        <!-- Script para animar los frames -->
+        <script>
+          AFRAME.registerComponent('frame-animation', {
+            schema: {
+              prefix: {type: 'string'},
+              count: {type: 'int'}
+            },
+            init: function () {
+              this.frames = [];
+              for (let i = 0; i < this.data.count; i++) {
+                this.frames.push(`#${this.data.prefix}-frame${i}`);
+              }
+              this.current = 0;
+              this.interval = null;
+
+              // Start animation only when parent target is visible
+              this.el.sceneEl.addEventListener("targetFound", (e) => {
+                if (this.el.parentElement === e.target && !this.interval) {
+                  this.start();
+                }
+              });
+
+              this.el.sceneEl.addEventListener("targetLost", (e) => {
+                if (this.el.parentElement === e.target) {
+                  this.stop();
+                }
+              });
+            },
+            start: function () {
+              this.interval = setInterval(() => {
+                this.el.setAttribute("src", this.frames[this.current]);
+                this.current = (this.current + 1) % this.frames.length;
+              }, 150);
+            },
+            stop: function () {
+              if (this.interval) {
+                clearInterval(this.interval);
+                this.interval = null;
+                this.current = 0; // optional: reset to first frame
+              }
+            },
+            remove: function () {
+              this.stop();
+            }
+          });
+        </script>
+        <script>
+
+          document.addEventListener("DOMContentLoaded", () => {
+            const targets = [
+              { target: "#target-bloom", image: "#anim-image-bloom" },
+              { target: "#target-flora", image: "#anim-image-flora" },
+              { target: "#target-musa", image: "#anim-image-musa" },
+              { target: "#target-layla", image: "#anim-image-layla" },
+              { target: "#target-stella", image: "#anim-image-stella" },
+              { target: "#target-techna", image: "#anim-image-techna" }
+            ];
+
+            targets.forEach(({ target, image }) => {
+              const t = document.querySelector(target);
+              const img = document.querySelector(image);
+              if (!t || !img) return;
+
+              t.addEventListener('targetFound', () => {
+                img.emit('enlarge');
+              });
+
+              t.addEventListener('targetLost', () => {
+                img.emit('shrink');
+              });
+            });
+          });
+        </script>
+      </a-scene>
+    </div>
+  </body>
+</html>
