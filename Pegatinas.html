@@ -52,14 +52,20 @@
 								<h1></h1>
 								<p>Filter for the stickers!</p>
 							</header>
-								<div class="filter-bar" style="margin-bottom:20px;">
-                                <label for="filter">Filter by group:</label>
-                                <select id="filter">
-                                    <option value="all">All</option>
-									<option value="anime">Anime</option>
-									<option value="videogames">Videogames</option>
-                                    <option value="other">Other</option>
-                                </select>
+							<div class="filter-bar" style="margin-bottom:20px; display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+								<div>
+									<label for="filter">Filter by group:</label>
+									<select id="filter">
+										<option value="all">All</option>
+										<option value="anime">Anime</option>
+										<option value="videogames">Videogames</option>
+										<option value="other">Other</option>
+									</select>
+								</div>
+								<div>
+									<label for="search">Search by character:</label>
+									<input type="text" id="search" placeholder="Type a name..." style="height: 3em; padding: 0 0.5em;" />
+								</div>
 							</div>
 							<section class="tiles">
 								<article class="style2" data-tags="anime">
@@ -184,19 +190,48 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script>
- 				 document.getElementById("filter").addEventListener("change", function() {
-   				 const value = this.value.toLowerCase();
-   				 const tiles = document.querySelectorAll(".tiles article");
+			document.addEventListener('DOMContentLoaded', function () {
+				const filterEl = document.getElementById('filter');
+				const searchEl = document.getElementById('search');
 
-    			tiles.forEach(tile => {
-      				const tag = tile.getAttribute("data-tag");
-      				if (value === "all" || (tag && tag.toLowerCase() === value)) {
-       					 tile.style.display = "block";
-     			 } else {
-        				tile.style.display = "none";
-      				}
-   				 });
- 				 });
+				function applyFilters() {
+					const selectedGroup = filterEl ? filterEl.value.trim().toLowerCase() : 'all';
+					const searchQuery = searchEl ? searchEl.value.trim().toLowerCase() : '';
+					const tiles = document.querySelectorAll('.tiles article');
+
+					tiles.forEach(tile => {
+						// Obtener etiquetas (compatibilidad con data-tags o data-tag)
+						const rawTags = tile.getAttribute('data-tags') || tile.getAttribute('data-tag') || '';
+						const tags = rawTags.toLowerCase().split(/\s*,\s*|\s+/).filter(Boolean);
+
+						// Obtener el nombre del personaje desde el tag <h2> dentro del article
+						const titleEl = tile.querySelector('h2');
+						const titleText = titleEl ? titleEl.textContent.toLowerCase() : '';
+
+						// Comprobar coincidencia de categoría
+						const matchesGroup = (selectedGroup === 'all' || tags.includes(selectedGroup));
+
+						// Comprobar coincidencia de texto
+						const matchesSearch = titleText.includes(searchQuery);
+
+						// Mostrar u ocultar la tarjeta
+						if (matchesGroup && matchesSearch) {
+							tile.style.display = '';
+						} else {
+							tile.style.display = 'none';
+						}
+					});
+				}
+
+				if (filterEl) {
+					filterEl.addEventListener('change', applyFilters);
+				}
+				if (searchEl) {
+					searchEl.addEventListener('input', applyFilters);
+				}
+
+				applyFilters();
+			});
 			</script>
 
 	</body>
