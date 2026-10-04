@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MindAR Secuencia PNG Animada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- MindAR y A-Frame -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+
+    <style>
+      body { margin: 0; overflow: hidden; }
+      #ar-container { width: 100vh; height: 100vh; }
+    </style>
+  </head>
+
+  <body>
+    <div id="ar-container">
+      <a-scene
+        mindar-image="imageTargetSrc: ../A.Pegatinas/Hamsters/targets.mind; maxTrack: 5; filterMinCF: 0.001; filterBeta: 100; warmupTolerance: 5; missTolerance: 5;"
+        color-space="sRGB"
+        embedded
+        renderer="colorManagement: true, physicallyCorrectLights"
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: true"
+      >
+        <a-assets>
+          <!-- Cargamos los frames de la animación -->
+          <img id="basic-frame0" src="../A.Pegatinas/Hamsters/Basic/BASE1.png" crossorigin="anonymous" />
+          <img id="basic-frame1" src="../A.Pegatinas/Hamsters/Basic/BASE2.png" crossorigin="anonymous" />
+          <img id="basic-frame2" src="../A.Pegatinas/Hamsters/Basic/BASE3.png" crossorigin="anonymous" />
+          <img id="basic-frame3" src="../A.Pegatinas/Hamsters/Basic/BASE4.png" crossorigin="anonymous" />
+          <img id="basic-frame4" src="../A.Pegatinas/Hamsters/Basic/BASE5.png" crossorigin="anonymous" />
+          <img id="basic-frame5" src="../A.Pegatinas/Hamsters/Basic/BASE6.png" crossorigin="anonymous" />
+          <img id="basic-frame6" src="../A.Pegatinas/Hamsters/Basic/BASE7.png" crossorigin="anonymous" />
+
+          <img id="crying-frame0" src="../A.Pegatinas/Hamsters/Crying/CRYING1.png" crossorigin="anonymous" />
+          <img id="crying-frame1" src="../A.Pegatinas/Hamsters/Crying/CRYING2.png" crossorigin="anonymous" />
+          <img id="crying-frame2" src="../A.Pegatinas/Hamsters/Crying/CRYING3.png" crossorigin="anonymous" />
+          <img id="crying-frame3" src="../A.Pegatinas/Hamsters/Crying/CRYING4.png" crossorigin="anonymous" />
+          <img id="crying-frame4" src="../A.Pegatinas/Hamsters/Crying/CRYING5.png" crossorigin="anonymous" />
+          <img id="crying-frame5" src="../A.Pegatinas/Hamsters/Crying/CRYING6.png" crossorigin="anonymous" />
+          <img id="crying-frame6" src="../A.Pegatinas/Hamsters/Crying/CRYING7.png" crossorigin="anonymous" />
+
+          <img id="evil-frame0" src="../A.Pegatinas/Hamsters/Evil/EVIL1.png" crossorigin="anonymous" />
+          <img id="evil-frame1" src="../A.Pegatinas/Hamsters/Evil/EVIL2.png" crossorigin="anonymous" />
+          <img id="evil-frame2" src="../A.Pegatinas/Hamsters/Evil/EVIL3.png" crossorigin="anonymous" />
+          <img id="evil-frame3" src="../A.Pegatinas/Hamsters/Evil/EVIL4.png" crossorigin="anonymous" />
+          <img id="evil-frame4" src="../A.Pegatinas/Hamsters/Evil/EVIL5.png" crossorigin="anonymous" />
+          <img id="evil-frame5" src="../A.Pegatinas/Hamsters/Evil/EVIL6.png" crossorigin="anonymous" />
+
+          <img id="freaky-frame0" src="../A.Pegatinas/Hamsters/Freaky/FREAKY1.png" crossorigin="anonymous" />
+          <img id="freaky-frame1" src="../A.Pegatinas/Hamsters/Freaky/FREAKY2.png" crossorigin="anonymous" />
+          <img id="freaky-frame2" src="../A.Pegatinas/Hamsters/Freaky/FREAKY3.png" crossorigin="anonymous" />
+          <img id="freaky-frame3" src="../A.Pegatinas/Hamsters/Freaky/FREAKY4.png" crossorigin="anonymous" />
+          <img id="freaky-frame4" src="../A.Pegatinas/Hamsters/Freaky/FREAKY5.png" crossorigin="anonymous" />
+          <img id="freaky-frame5" src="../A.Pegatinas/Hamsters/Freaky/FREAKY6.png" crossorigin="anonymous" />
+          <img id="freaky-frame6" src="../A.Pegatinas/Hamsters/Freaky/FREAKY7.png" crossorigin="anonymous" />
+
+          <img id="love-frame0" src="../A.Pegatinas/Hamsters/Love/LOVE1.png" crossorigin="anonymous" />
+          <img id="love-frame1" src="../A.Pegatinas/Hamsters/Love/LOVE2.png" crossorigin="anonymous" />
+          <img id="love-frame2" src="../A.Pegatinas/Hamsters/Love/LOVE3.png" crossorigin="anonymous" />
+          <img id="love-frame3" src="../A.Pegatinas/Hamsters/Love/LOVE4.png" crossorigin="anonymous" />
+          <img id="love-frame4" src="../A.Pegatinas/Hamsters/Love/LOVE5.png" crossorigin="anonymous" />
+          <img id="love-frame5" src="../A.Pegatinas/Hamsters/Love/LOVE6.png" crossorigin="anonymous" />
+        </a-assets>
+
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+
+        <!-- Una a-entity para cada uno, solo cambia la ID -->
+        <a-entity mindar-image-target="targetIndex: 0" id="target-basic">
+          <a-image
+            id="anim-image-basic"
+            src="#basic-frame0"
+            position="0 0.4 0"
+            width="1.5"
+            height="1.5"
+            frame-animation="prefix: basic; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 1" id="target-crying">
+          <a-image
+            id="anim-image-crying"
+            src="#crying-frame0"
+            position="0 0 0"
+            width="1.3"
+            height="1"
+            frame-animation="prefix: crying; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 2" id="target-evil">
+          <a-image
+            id="anim-image-evil"
+            src="#evil-frame0"
+            position="0.15 0.05 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: evil; count: 6"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 3" id="target-freaky">
+          <a-image
+            id="anim-image-freaky"
+            src="#freaky-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: freaky; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 4" id="target-love">
+          <a-image
+            id="anim-image-love"
+            src="#love-frame0"
+            position="0 0.13 0"
+            width="0.9"
+            height="1.05"
+            frame-animation="prefix: love; count: 6"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <!-- Script para animar los frames -->
+        <script>
+          AFRAME.registerComponent('frame-animation', {
+            schema: {
+              prefix: {type: 'string'},
+              count: {type: 'int'}
+            },
+            init: function () {
+              this.frames = [];
+              for (let i = 0; i < this.data.count; i++) {
+                this.frames.push(`#${this.data.prefix}-frame${i}`);
+              }
+              this.current = 0;
+              this.interval = null;
+
+              // Start animation only when parent target is visible
+              this.el.sceneEl.addEventListener("targetFound", (e) => {
+                if (this.el.parentElement === e.target && !this.interval) {
+                  this.start();
+                }
+              });
+
+              this.el.sceneEl.addEventListener("targetLost", (e) => {
+                if (this.el.parentElement === e.target) {
+                  this.stop();
+                }
+              });
+            },
+            start: function () {
+              this.interval = setInterval(() => {
+                this.el.setAttribute("src", this.frames[this.current]);
+                this.current = (this.current + 1) % this.frames.length;
+              }, 150);
+            },
+            stop: function () {
+              if (this.interval) {
+                clearInterval(this.interval);
+                this.interval = null;
+                this.current = 0; // optional: reset to first frame
+              }
+            },
+            remove: function () {
+              this.stop();
+            }
+          });
+        </script>
+        <script>
+
+          document.addEventListener("DOMContentLoaded", () => {
+            const targets = [
+              { target: "#target-basic", image: "#anim-image-basic" },
+              { target: "#target-crying", image: "#anim-image-crying" },
+              { target: "#target-evil", image: "#anim-image-evil" },
+              { target: "#target-freaky", image: "#anim-image-freaky" },
+              { target: "#target-love", image: "#anim-image-love" }
+            ];
+
+            targets.forEach(({ target, image }) => {
+              const t = document.querySelector(target);
+              const img = document.querySelector(image);
+              if (!t || !img) return;
+
+              t.addEventListener('targetFound', () => {
+                img.emit('enlarge');
+              });
+
+              t.addEventListener('targetLost', () => {
+                img.emit('shrink');
+              });
+            });
+          });
+        </script>
+      </a-scene>
+    </div>
+  </body>
+</html>
