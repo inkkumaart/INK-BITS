@@ -19,7 +19,7 @@
   <body>
     <div id="ar-container">
       <a-scene
-        mindar-image="imageTargetSrc: ../A.Pegatinas/Hamsters/targets.mind; maxTrack: 5; filterMinCF: 0.001; filterBeta: 100; warmupTolerance: 5; missTolerance: 5;"
+        mindar-image="imageTargetSrc: ../A.Pegatinas/Hamsters/targets.mind; maxTrack: 4; filterMinCF: 0.0001; filterBeta: 1000; warmupTolerance: 10; missTolerance: 10;"
         color-space="sRGB"
         embedded
         renderer="colorManagement: true, physicallyCorrectLights"
@@ -50,14 +50,6 @@
           <img id="evil-frame3" src="../A.Pegatinas/Hamsters/Evil/EVIL4.png" crossorigin="anonymous" />
           <img id="evil-frame4" src="../A.Pegatinas/Hamsters/Evil/EVIL5.png" crossorigin="anonymous" />
           <img id="evil-frame5" src="../A.Pegatinas/Hamsters/Evil/EVIL6.png" crossorigin="anonymous" />
-
-          <img id="freaky-frame0" src="../A.Pegatinas/Hamsters/Freaky/FREAKY1.png" crossorigin="anonymous" />
-          <img id="freaky-frame1" src="../A.Pegatinas/Hamsters/Freaky/FREAKY2.png" crossorigin="anonymous" />
-          <img id="freaky-frame2" src="../A.Pegatinas/Hamsters/Freaky/FREAKY3.png" crossorigin="anonymous" />
-          <img id="freaky-frame3" src="../A.Pegatinas/Hamsters/Freaky/FREAKY4.png" crossorigin="anonymous" />
-          <img id="freaky-frame4" src="../A.Pegatinas/Hamsters/Freaky/FREAKY5.png" crossorigin="anonymous" />
-          <img id="freaky-frame5" src="../A.Pegatinas/Hamsters/Freaky/FREAKY6.png" crossorigin="anonymous" />
-          <img id="freaky-frame6" src="../A.Pegatinas/Hamsters/Freaky/FREAKY7.png" crossorigin="anonymous" />
 
           <img id="love-frame0" src="../A.Pegatinas/Hamsters/Love/LOVE1.png" crossorigin="anonymous" />
           <img id="love-frame1" src="../A.Pegatinas/Hamsters/Love/LOVE2.png" crossorigin="anonymous" />
@@ -109,21 +101,7 @@
             animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
           ></a-image>
         </a-entity>
-
-        <a-entity mindar-image-target="targetIndex: 3" id="target-freaky">
-          <a-image
-            id="anim-image-freaky"
-            src="#freaky-frame0"
-            position="0 0 0"
-            width="1"
-            height="1"
-            frame-animation="prefix: freaky; count: 7"
-            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
-            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
-          ></a-image>
-        </a-entity>
-
-        <a-entity mindar-image-target="targetIndex: 4" id="target-love">
+        <a-entity mindar-image-target="targetIndex: 3" id="target-love">
           <a-image
             id="anim-image-love"
             src="#love-frame0"
@@ -189,7 +167,6 @@
               { target: "#target-basic", image: "#anim-image-basic" },
               { target: "#target-crying", image: "#anim-image-crying" },
               { target: "#target-evil", image: "#anim-image-evil" },
-              { target: "#target-freaky", image: "#anim-image-freaky" },
               { target: "#target-love", image: "#anim-image-love" }
             ];
 
