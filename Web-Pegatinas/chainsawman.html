@@ -19,7 +19,7 @@
   <body>
     <div id="ar-container">
       <a-scene 
-        mindar-image="imageTargetSrc: ../A.Pegatinas/Chainsawman/targets.mind; maxTrack: 5; filterMinCF: 0.001; filterBeta: 10; warmupTolerance: 5; missTolerance: 5;" 
+        mindar-image="imageTargetSrc: ../A.Pegatinas/Chainsawman/targets.mind; maxTrack: 6; filterMinCF: 0.001; filterBeta: 10; warmupTolerance: 5; missTolerance: 5;" 
         color-space="sRGB"
         embedded
         renderer="colorManagement: true, physicallyCorrectLights"
@@ -64,6 +64,16 @@
           <img id="pochita-frame3" src="../A.Pegatinas/Chainsawman/Pochita/Pochita-4.png" crossorigin="anonymous" />
           <img id="pochita-frame4" src="../A.Pegatinas/Chainsawman/Pochita/Pochita-5.png" crossorigin="anonymous" />
           <img id="pochita-frame5" src="../A.Pegatinas/Chainsawman/Pochita/Pochita-6.png" crossorigin="anonymous" />
+          
+          <img id="reze-frame0" src="../A.Pegatinas/Chainsawman/Reze/Reze-1.png" crossorigin="anonymous" />
+          <img id="reze-frame2" src="../A.Pegatinas/Chainsawman/Reze/Reze-2.png" crossorigin="anonymous" />
+          <img id="reze-frame3" src="../A.Pegatinas/Chainsawman/Reze/Reze-3.png" crossorigin="anonymous" />
+          <img id="reze-frame4" src="../A.Pegatinas/Chainsawman/Reze/Reze-4.png" crossorigin="anonymous" />
+          <img id="reze-frame5" src="../A.Pegatinas/Chainsawman/Reze/Reze-5.png" crossorigin="anonymous" />
+          <img id="reze-frame6" src="../A.Pegatinas/Chainsawman/Reze/Reze-6.png" crossorigin="anonymous" />
+          <img id="reze-frame7" src="../A.Pegatinas/Chainsawman/Reze/Reze-7.png" crossorigin="anonymous" />
+          <img id="reze-frame8" src="../A.Pegatinas/Chainsawman/Reze/Reze-8.png" crossorigin="anonymous" />
+          <img id="reze-frame9" src="../A.Pegatinas/Chainsawman/Reze/Reze-9.png" crossorigin="anonymous" />
 
         </a-assets>
 
@@ -71,7 +81,7 @@
 
 
         <!-- Una a-entity para cada uno, solo cambia la ID -->
-        <a-entity mindar-image-target="targetIndex: 1" id="target-aki">
+        <a-entity mindar-image-target="targetIndex: 0" id="target-aki">
           <a-image
             id="anim-image-aki"
             src="#aki-frame0"
@@ -84,7 +94,7 @@
           ></a-image>
         </a-entity>
 
-        <a-entity mindar-image-target="targetIndex: 0" id="target-denji">
+        <a-entity mindar-image-target="targetIndex: 1" id="target-denji">
           <a-image
             id="anim-image-denji"
             src="#denji-frame0"
@@ -97,7 +107,7 @@
           ></a-image>
         </a-entity>
 
-        <a-entity mindar-image-target="targetIndex: 3" id="target-makima">
+        <a-entity mindar-image-target="targetIndex: 2" id="target-makima">
           <a-image
             id="anim-image-makima"
             src="#makima-frame0"
@@ -110,7 +120,7 @@
           ></a-image>
         </a-entity>
 
-        <a-entity mindar-image-target="targetIndex: 2" id="target-power">
+        <a-entity mindar-image-target="targetIndex: 3" id="target-power">
           <a-image
             id="anim-image-power"
             src="#power-frame0"
@@ -131,6 +141,19 @@
             width="1"
             height="1"
             frame-animation="prefix: pochita; count: 6"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>  
+
+        <a-entity mindar-image-target="targetIndex: 5" id="target-reze">
+          <a-image
+            id="anim-image-reze"
+            src="#reze-frame0"
+            position="0 0.3 0"
+            width="1.5"
+            height="1.7"
+            frame-animation="prefix: reze; count: 9"
             animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
             animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
           ></a-image>
@@ -190,7 +213,8 @@
               { target: "#target-denji", image: "#anim-image-denji" },
               { target: "#target-makima", image: "#anim-image-makima" },
               { target: "#target-power", image: "#anim-image-power" },
-              { target: "#target-pochita", image: "#anim-image-pochita" }
+              { target: "#target-pochita", image: "#anim-image-pochita"},
+              { target: "#target-reze", image: "#anim-image-reze" }
             ];
 
             targets.forEach(({ target, image }) => {
