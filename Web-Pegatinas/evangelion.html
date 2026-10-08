@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MindAR Secuencia PNG Animada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- MindAR y A-Frame -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+
+    <style>
+      body { margin: 0; overflow: hidden; }
+      #ar-container { width: 100vh; height: 100vh; }
+    </style>
+  </head>
+
+  <body>
+    <div id="ar-container">
+      <a-scene 
+        mindar-image="imageTargetSrc: ../A.Pegatinas/Evangelion/targets.mind; maxTrack: 5; filterMinCF: 0.001; filterBeta: 0.0001; warmupTolerance: 5; missTolerance: 5;" 
+        color-space="sRGB"
+        embedded
+        renderer="colorManagement: true, physicallyCorrectLights"
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: true"
+      >
+        <a-assets>
+          <!-- Cargamos los frames de la animación -->
+          <img id="asuka-frame0" src="../A.Pegatinas/Evangelion/Asuka/Asuka-1.png" crossorigin="anonymous" />
+          <img id="asuka-frame1" src="../A.Pegatinas/Evangelion/Asuka/Asuka-2.png" crossorigin="anonymous" />
+          <img id="asuka-frame2" src="../A.Pegatinas/Evangelion/Asuka/Asuka-3.png" crossorigin="anonymous" />
+          <img id="asuka-frame3" src="../A.Pegatinas/Evangelion/Asuka/Asuka-4.png" crossorigin="anonymous" />
+
+          <img id="kamoru-frame0" src="../A.Pegatinas/Evangelion/Kamoru/Kaworu-1.png" crossorigin="anonymous" />
+          <img id="kamoru-frame1" src="../A.Pegatinas/Evangelion/Kamoru/Kaworu-2.png" crossorigin="anonymous" />
+          <img id="kamoru-frame2" src="../A.Pegatinas/Evangelion/Kamoru/Kaworu-3.png" crossorigin="anonymous" />
+          <img id="kamoru-frame3" src="../A.Pegatinas/Evangelion/Kamoru/Kaworu-4.png" crossorigin="anonymous" />
+          <img id="kamoru-frame4" src="../A.Pegatinas/Evangelion/Kamoru/Kaworu-5.png" crossorigin="anonymous" />
+          <img id="kamoru-frame5" src="../A.Pegatinas/Evangelion/Kamoru/Kaworu-6.png" crossorigin="anonymous" />
+          <img id="kamoru-frame6" src="../A.Pegatinas/Evangelion/Kamoru/Kaworu-7.png" crossorigin="anonymous" />
+
+          <img id="misato-frame0" src="../A.Pegatinas/Evangelion/Misato/Misato-1.png" crossorigin="anonymous" />
+          <img id="misato-frame1" src="../A.Pegatinas/Evangelion/Misato/Misato-2.png" crossorigin="anonymous" />
+          <img id="misato-frame2" src="../A.Pegatinas/Evangelion/Misato/Misato-3.png" crossorigin="anonymous" />
+          <img id="misato-frame3" src="../A.Pegatinas/Evangelion/Misato/Misato-4.png" crossorigin="anonymous" />
+          <img id="misato-frame4" src="../A.Pegatinas/Evangelion/Misato/Misato-5.png" crossorigin="anonymous" />
+          <img id="misato-frame5" src="../A.Pegatinas/Evangelion/Misato/Misato-6.png" crossorigin="anonymous" />
+          <img id="misato-frame6" src="../A.Pegatinas/Evangelion/Misato/Misato-7.png" crossorigin="anonymous" />
+          <img id="misato-frame7" src="../A.Pegatinas/Evangelion/Misato/Misato-8.png" crossorigin="anonymous" />
+          <img id="misato-frame8" src="../A.Pegatinas/Evangelion/Misato/Misato-9.png" crossorigin="anonymous" />
+          <img id="misato-frame9" src="../A.Pegatinas/Evangelion/Misato/Misato-10.png" crossorigin="anonymous" />
+          <img id="misato-frame10" src="../A.Pegatinas/Evangelion/Misato/Misato-11.png" crossorigin="anonymous" />
+
+          <img id="rei-frame0" src="../A.Pegatinas/Evangelion/Rei/Rei-1.png" crossorigin="anonymous" />
+          <img id="rei-frame1" src="../A.Pegatinas/Evangelion/Rei/Rei-2.png" crossorigin="anonymous" />
+          <img id="rei-frame2" src="../A.Pegatinas/Evangelion/Rei/Rei-3.png" crossorigin="anonymous" />
+          <img id="rei-frame3" src="../A.Pegatinas/Evangelion/Rei/Rei-4.png" crossorigin="anonymous" />
+          <img id="rei-frame4" src="../A.Pegatinas/Evangelion/Rei/Rei-5.png" crossorigin="anonymous" />
+          <img id="rei-frame5" src="../A.Pegatinas/Evangelion/Rei/Rei-6.png" crossorigin="anonymous" />
+          <img id="rei-frame6" src="../A.Pegatinas/Evangelion/Rei/Rei-7.png" crossorigin="anonymous" />
+          <img id="rei-frame7" src="../A.Pegatinas/Evangelion/Rei/Rei-8.png" crossorigin="anonymous" />
+
+          <img id="shinji-frame0" src="../A.Pegatinas/Evangelion/Shinji/Shinji-1.png" crossorigin="anonymous" />
+          <img id="shinji-frame1" src="../A.Pegatinas/Evangelion/Shinji/Shinji-2.png" crossorigin="anonymous" />
+          <img id="shinji-frame2" src="../A.Pegatinas/Evangelion/Shinji/Shinji-3.png" crossorigin="anonymous" />
+          <img id="shinji-frame3" src="../A.Pegatinas/Evangelion/Shinji/Shinji-4.png" crossorigin="anonymous" />
+          <img id="shinji-frame4" src="../A.Pegatinas/Evangelion/Shinji/Shinji-5.png" crossorigin="anonymous" />
+          <img id="shinji-frame5" src="../A.Pegatinas/Evangelion/Shinji/Shinji-6.png" crossorigin="anonymous" />
+        </a-assets>
+
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+
+        <!-- Una a-entity para cada uno, solo cambia la ID -->
+        <a-entity mindar-image-target="targetIndex: 0" id="target-asuka">
+          <a-image
+            id="anim-image-asuka"
+            src="#asuka-frame0"
+            position="0 0.1 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: asuka; count: 4"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 1" id="target-kamoru">
+          <a-image
+            id="anim-image-kamoru"
+            src="#kamoru-frame0"
+            position="0 0.1 0"
+            width="1.15"
+            height="1.1"
+            frame-animation="prefix: kamoru; count: 7"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 2" id="target-misato">
+          <a-image
+            id="anim-image-misato"
+            src="#misato-frame0"
+            position="0 0 0"
+            width="1"
+            height="1"
+            frame-animation="prefix: misato; count: 11"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 3" id="target-rei">
+          <a-image
+            id="anim-image-rei"
+            src="#rei-frame0"
+            position="0 0.1 0"
+            width="1"
+            height="1.4"
+            frame-animation="prefix: rei; count: 8"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>    
+
+        <a-entity mindar-image-target="targetIndex: 4" id="target-shinji">
+          <a-image
+            id="anim-image-shinji"
+            src="#shinji-frame0"
+            position="0 0.05 0"
+            width="1.3"
+            height="1.2"
+            frame-animation="prefix: shinji; count: 6"
+            animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
+            animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
+          ></a-image>
+        </a-entity>   
+
+        <!-- Script para animar los frames -->
+        <script>
+          AFRAME.registerComponent('frame-animation', {
+            schema: {
+              prefix: {type: 'string'},
+              count: {type: 'int'}
+            },
+            init: function () {
+              this.frames = [];
+              for (let i = 0; i < this.data.count; i++) {
+                this.frames.push(`#${this.data.prefix}-frame${i}`);
+              }
+              this.current = 0;
+              this.interval = null;
+
+              // Start animation only when parent target is visible
+              this.el.sceneEl.addEventListener("targetFound", (e) => {
+                if (this.el.parentElement === e.target && !this.interval) {
+                  this.start();
+                }
+              });
+
+              this.el.sceneEl.addEventListener("targetLost", (e) => {
+                if (this.el.parentElement === e.target) {
+                  this.stop();
+                }
+              });
+            },
+            start: function () {
+              this.interval = setInterval(() => {
+                this.el.setAttribute("src", this.frames[this.current]);
+                this.current = (this.current + 1) % this.frames.length;
+              }, 150);
+            },
+            stop: function () {
+              if (this.interval) {
+                clearInterval(this.interval);
+                this.interval = null;
+                this.current = 0; // optional: reset to first frame
+              }
+            },
+            remove: function () {
+              this.stop();
+            }
+          });
+        </script>
+        <script>
+
+          document.addEventListener("DOMContentLoaded", () => {
+            const targets = [
+              { target: "#target-asuka", image: "#anim-image-asuka" },
+              { target: "#target-kamoru", image: "#anim-image-kamoru" },
+              { target: "#target-misato", image: "#anim-image-misato" },
+              { target: "#target-rei", image: "#anim-image-rei" },
+              { target: "#target-shinji", image: "#anim-image-shinji" }
+            ];
+
+            targets.forEach(({ target, image }) => {
+              const t = document.querySelector(target);
+              const img = document.querySelector(image);
+              if (!t || !img) return;
+
+              t.addEventListener('targetFound', () => {
+                img.emit('enlarge');
+              });
+
+              t.addEventListener('targetLost', () => {
+                img.emit('shrink');
+              });
+            });
+          });
+        </script>
+      </a-scene>
+    </div>
+  </body>
+</html>
