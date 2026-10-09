@@ -19,7 +19,7 @@
   <body>
     <div id="ar-container">
       <a-scene 
-        mindar-image="imageTargetSrc: ../A.llaveros/Isaac/targets.mind; filterMinCF: 0.0001; filterBeta: 0.001; warmupTolerance: 1; missTolerance: 8;" 
+        mindar-image="imageTargetSrc: ../A.llaveros/Isaac/targets.mind; filterMinCF: 0.01; filterBeta: 0.001; warmupTolerance: 1; missTolerance: 18;" 
         color-space="sRGB"
         embedded
         renderer="colorManagement: true, physicallyCorrectLights"
@@ -45,9 +45,9 @@
           <a-image
             id="anim-image"
             src="#frame0"
-            position="0.15 0.3 0"
+            position="0.15 0.35 0"
             width="1.35"
-            height="1.6"
+            height="1.5"
             frame-animation
             animation__enlarge="property: scale; to: 1 1.3 1.2; dur: 300; startEvents: enlarge"
             animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"

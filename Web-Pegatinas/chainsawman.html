@@ -19,7 +19,7 @@
   <body>
     <div id="ar-container">
       <a-scene 
-        mindar-image="imageTargetSrc: ../A.Pegatinas/Chainsawman/targets.mind; maxTrack: 6; filterMinCF: 0.001; filterBeta: 10; warmupTolerance: 5; missTolerance: 5;" 
+        mindar-image="imageTargetSrc: ../A.Pegatinas/Chainsawman/targets.mind; maxTrack: 6; filterMinCF: 0.001; filterBeta: 0.01; warmupTolerance: 3; missTolerance: 10;" 
         color-space="sRGB"
         embedded
         renderer="colorManagement: true, physicallyCorrectLights"
@@ -111,9 +111,9 @@
           <a-image
             id="anim-image-makima"
             src="#makima-frame0"
-            position="0 0 0"
+            position="0 0.1 0"
             width="1"
-            height="1"
+            height="1.3"
             frame-animation="prefix: makima; count: 6"
             animation__enlarge="property: scale; to: 1.2 1.2 1.2; dur: 300; startEvents: enlarge"
             animation__shrink="property: scale; to: 1 1 1; dur: 300; startEvents: shrink"
